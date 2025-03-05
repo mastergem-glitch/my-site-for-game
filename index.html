@@ -1,48 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-    <!-- Animated background -->
-    <div class="background-animations">
-        ...
-    </div>
-
-    <!-- Google Ads script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
-
-    <!-- Main content -->
-    <div class="main-container">
-        ...
-    </div>
-
-    <!-- Advertisement footer -->
-    <div class="ad-footer">
-        <p>Advertisement</p>
-    </div>
-
-    ...
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motivational Quote Generator with Mini-Games</title>
     <style>
-    
-    /* Advertisement footer */
-.ad-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Ensure it spans the full width */
-    width: 100%; /* Full width */
-    height: auto; /* Allow height to adjust based on content */
-    padding: 10px; /* Optional: add padding for better appearance */
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 14px;
-    z-index: 1;
-}
         /* Reset and set gradient background */
         body {
             margin: 0;
@@ -138,6 +100,42 @@
         .main-container {
             z-index: 1;
             text-align: center;
+        }
+
+        /* Advertisement above tabs */
+        .dev {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 728px;
+            min-height: 90px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Ensure the ad is responsive and fits the container */
+        .dev ins {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive adjustments for .dev */
+        @media (max-width: 768px) {
+            .dev {
+                max-width: 100%;
+                min-height: 60px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .dev {
+                padding: 10px;
+                min-height: 50px;
+            }
         }
 
         /* Tabs */
@@ -350,6 +348,7 @@
         <div class="star star8"></div>
         <div class="star star9"></div>
         <div class="star star10"></div>
+        <div class="star star10"></div>
         <div class="planet planet1"></div>
         <div class="planet planet2"></div>
         <div class="planet planet3"></div>
@@ -359,6 +358,19 @@
 
     <!-- Main content -->
     <div class="main-container">
+        <!-- Advertisement above tabs -->
+        <div class="dev">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7107573195140676"
+                 data-ad-slot="YOUR_AD_SLOT_ID" <!-- Replace with your actual ad slot ID -->
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         <div class="tabs">
             <div class="tab active" data-tab="quotes">Quotes</div>
             <div class="tab" data-tab="clicker">Clicker Game</div>
