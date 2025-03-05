@@ -21,6 +21,12 @@
             color: white;
         }
 
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* Background animations container */
         .background-animations {
             position: fixed;
@@ -31,6 +37,7 @@
             z-index: -1;
             overflow: hidden;
         }
+
         /* Particle effects */
         .particle {
             position: absolute;
@@ -41,83 +48,11 @@
             animation: float 5s infinite ease-in-out;
         }
 
-        /* Base star styles */
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
-        }
-
-        /* Base planet styles */
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, #fff, #ccc);
-        }
-
-        /* Twinkle animation for stars */
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Movement animations for planets */
-        @keyframes move-horizontal {
-            0% { transform: translateX(-20px); }
-            100% { transform: translateX(calc(100vw + 20px)); }
-        }
-
-        @keyframes move-vertical {
-            0% { transform: translateY(-20px); }
-            100% { transform: translateY(calc(100vh + 20px)); }
-        }
-              @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes move-diagonal {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100vw, 100vh); }
-        }
-
-        @keyframes move-horizontal-reverse {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-calc(100vw + 20px)); }
-        }
-
-        @keyframes move-vertical-reverse {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-calc(100vh + 20px)); }
-        }
-                @keyframes float {
+        @keyframes float {
             0% { transform: translateY(0) scale(1); opacity: 0.5; }
             50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
             100% { transform: translateY(0) scale(1); opacity: 0.5; }
         }
-
-        /* Unique styles for stars */
-        .star1 { top: 10%; left: 15%; animation-duration: 1.5s; }
-        .star2 { top: 20%; left: 25%; animation-duration: 2s; }
-        .star3 { top: 30%; left: 35%; animation-duration: 1.8s; }
-        .star4 { top: 40%; left: 45%; animation-duration: 2.2s; }
-        .star5 { top: 50%; left: 55%; animation-duration: 1.6s; }
-        .star6 { top: 60%; left: 65%; animation-duration: 2.5s; }
-        .star7 { top: 70%; left: 75%; animation-duration: 1.9s; }
-        .star8 { top: 80%; left: 85%; animation-duration: 2.1s; }
-        .star9 { top: 15%; left: 50%; animation-duration: 1.7s; }
-        .star10 { top: 25%; left: 70%; animation-duration: 2.3s; }
-
-        /* Unique styles for planets */
-        .planet1 { width: 10px; height: 10px; top: 20%; left: -10px; animation: move-horizontal 30s linear infinite; }
-        .planet2 { width: 15px; height: 15px; top: -15px; left: 30%; animation: move-vertical 40s linear infinite; }
-        .planet3 { width: 8px; height: 8px; top: 0; left: 0; animation: move-diagonal 25s linear infinite; }
-        .planet4 { width: 12px; height: 12px; top: 50%; left: calc(100vw + 12px); animation: move-horizontal-reverse 35s linear infinite; }
-        .planet5 { width: 18px; height: 18px; top: calc(100vh + 18px); left: 70%; animation: move-vertical-reverse 45s linear infinite; }
 
         /* Main container */
         .main-container {
@@ -130,42 +65,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             max-width: 90%;
             width: 800px;
-          }
-
-        /* Advertisement above tabs */
-        .dev {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            text-align: center;
-            width: 100%;
-            max-width: 728px;
-            min-height: 90px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Ensure the ad is responsive and fits the container */
-        .dev ins {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* Responsive adjustments for .dev */
-        @media (max-width: 768px) {
-            .dev {
-                max-width: 100%;
-                min-height: 60px;
-            
-        }
-
-        @media (max-width: 400px) {
-            .dev {
-                padding: 10px;
-                min-height: 50px;
-            }
         }
 
         /* Tabs */
@@ -175,7 +74,7 @@
             margin-bottom: 20px;
         }
 
-               .tab {
+        .tab {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.2);
             cursor: pointer;
@@ -186,18 +85,18 @@
             font-weight: 500;
         }
 
-                .tab:hover {
+        .tab:hover {
             background: rgba(255, 255, 255, 0.4);
             transform: translateY(-3px);
         }
 
-                .tab.active {
+        .tab.active {
             background: white;
             color: #ff7e5f;
             box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
         }
 
-                /* Tab content */
+        /* Tab content */
         .tab-content {
             display: none;
             background: rgba(255, 255, 255, 0.1);
@@ -207,7 +106,7 @@
             margin-top: 20px;
         }
 
-                .tab-content.active {
+        .tab-content.active {
             display: block;
         }
 
@@ -231,7 +130,7 @@
             100% { transform: rotate(0deg); }
         }
 
-                #quote {
+        #quote {
             margin-top: 20px;
             font-size: 24px;
             color: white;
@@ -244,7 +143,8 @@
             transition: opacity 0.6s;
             font-weight: 300;
         }
-               /* Game styles */
+
+        /* Game styles */
         #clicker-area {
             width: 300px;
             height: 200px;
@@ -256,7 +156,7 @@
             background: rgba(0, 0, 0, 0.2);
         }
 
-                #clicker-emoji {
+        #clicker-emoji {
             position: absolute;
             font-size: 40px;
             cursor: pointer;
@@ -355,7 +255,8 @@
         .memory-card.matched .front {
             background: rgba(144, 238, 144, 0.8);
         }
-                /* Buttons */
+
+        /* Buttons */
         button {
             background: rgba(255, 255, 255, 0.2);
             border: none;
@@ -372,22 +273,7 @@
             transform: translateY(-3px);
         }
 
-        /* Advertisement footer */
-        .ad-footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 14px;
-            z-index: 1;
-        }
-
-                /* Responsive adjustments */
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             #emoji { font-size: 80px; }
             #quote { font-size: 18px; }
@@ -418,22 +304,6 @@
         <div class="particle" style="top: 40%; left: 45%; animation-delay: 3s;"></div>
         <div class="particle" style="top: 50%; left: 55%; animation-delay: 4s;"></div>
     </div>
-    
-     <div class="main-container">
-        <!-- Advertisement above tabs -->
-        <div class="dev">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7107573195140676"
-                 data-ad-slot="YOUR_AD_SLOT_ID"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <!-- Replace with your actual ad slot ID -->
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
 
     <!-- Main content -->
     <div class="main-container">
@@ -470,14 +340,7 @@
             <div id="memory-grid"></div>
             <p>Stage: <span id="memory-stage">1</span></p>
             <button id="reset-memory">Reset Game</button>
-            
         </div>
-    </div>
-    
-
-    <!-- Advertisement footer -->
-    <div class="ad-footer">
-        <p>Advertisement</p>
     </div>
 
     <script>
@@ -681,7 +544,7 @@
 
         function createPuzzleGrid() {
             puzzleGridDiv.innerHTML = '';
-            puzzleGridDiv.style.gridTemplateColumns = `repeat(${puzzleSize}, 50px)`;
+            puzzleGridDiv.style.gridTemplateColumns = `repeat(${puzzleSize}, 80px)`;
             puzzleGrid.forEach((number, index) => {
                 if (number !== 0) {
                     const piece = document.createElement('div');
@@ -749,7 +612,7 @@
             const emojis = memoryEmojis.slice(0, memoryPairs);
             const cardValues = [...emojis, ...emojis];
             cardValues.sort(() => Math.random() - 0.5);
-            memoryGrid.style.gridTemplateColumns = `repeat(${Math.ceil(Math.sqrt(cardValues.length))}, 50px)`;
+            memoryGrid.style.gridTemplateColumns = `repeat(${Math.ceil(Math.sqrt(cardValues.length))}, 80px)`;
             cardValues.forEach(value => {
                 const card = document.createElement('div');
                 card.classList.add('memory-card');
