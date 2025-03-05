@@ -9,13 +9,16 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            background: linear-gradient(-45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: white;
         }
 
         /* Background animations container */
@@ -26,6 +29,16 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
+            overflow: hidden;
+        }
+        /* Particle effects */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
         }
 
         /* Base star styles */
@@ -61,6 +74,11 @@
             0% { transform: translateY(-20px); }
             100% { transform: translateY(calc(100vh + 20px)); }
         }
+              @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         @keyframes move-diagonal {
             0% { transform: translate(0, 0); }
@@ -75,6 +93,11 @@
         @keyframes move-vertical-reverse {
             0% { transform: translateY(0); }
             100% { transform: translateY(-calc(100vh + 20px)); }
+        }
+                @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.5; }
         }
 
         /* Unique styles for stars */
@@ -100,7 +123,14 @@
         .main-container {
             z-index: 1;
             text-align: center;
-        }
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 800px;
+          }
 
         /* Advertisement above tabs */
         .dev {
@@ -128,7 +158,7 @@
             .dev {
                 max-width: 100%;
                 min-height: 60px;
-            }
+            
         }
 
         @media (max-width: 400px) {
@@ -145,35 +175,39 @@
             margin-bottom: 20px;
         }
 
-        .tab {
+               .tab {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.2);
             cursor: pointer;
             margin: 0 5px;
-            border-radius: 5px;
+            border-radius: 10px;
             color: white;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
-        .tab:hover {
+                .tab:hover {
             background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
         }
 
-        .tab.active {
+                .tab.active {
             background: white;
             color: #ff7e5f;
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
         }
 
-        /* Tab content */
+                /* Tab content */
         .tab-content {
             display: none;
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             color: white;
+            margin-top: 20px;
         }
 
-        .tab-content.active {
+                .tab-content.active {
             display: block;
         }
 
@@ -182,6 +216,7 @@
             font-size: 100px;
             cursor: pointer;
             animation: wiggle 2s infinite;
+            transition: transform 0.3s ease;
         }
 
         #emoji:hover {
@@ -196,71 +231,93 @@
             100% { transform: rotate(0deg); }
         }
 
-        #quote {
+                #quote {
             margin-top: 20px;
             font-size: 24px;
             color: white;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             max-width: 80%;
             text-align: center;
             margin: 20px auto;
             transition: opacity 0.6s;
+            font-weight: 300;
         }
-
-        /* Game styles */
+               /* Game styles */
         #clicker-area {
             width: 300px;
             height: 200px;
             position: relative;
-            border: 1px solid white;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
             overflow: hidden;
             margin: 0 auto;
             background: rgba(0, 0, 0, 0.2);
         }
 
-        #clicker-emoji {
+                #clicker-emoji {
             position: absolute;
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
             transition: all 0.1s;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         #puzzle-grid {
             display: grid;
-            grid-template-columns: repeat(3, 50px);
-            grid-gap: 5px;
+            grid-template-columns: repeat(3, 80px);
+            grid-gap: 10px;
             margin: 0 auto;
         }
 
         .puzzle-piece {
-            width: 50px;
-            height: 50px;
-            background: white;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 20px;
-            color: #ff7e5f;
-            border-radius: 5px;
+            font-size: 24px;
+            color: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .puzzle-piece:hover {
+            transform: scale(1.05);
         }
 
         #memory-grid {
             display: grid;
-            grid-template-columns: repeat(4, 50px);
-            grid-gap: 5px;
+            grid-template-columns: repeat(4, 80px);
+            grid-gap: 10px;
             margin: 0 auto;
         }
 
         .memory-card {
-            width: 50px;
-            height: 50px;
-            margin: 5px;
-            display: inline-block;
-            position: relative;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
         }
 
         .memory-card .front, .memory-card .back {
@@ -273,17 +330,17 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         .memory-card .front {
             transform: rotateY(180deg);
-            background: white;
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .memory-card .back {
             transform: rotateY(0deg);
-            background: #ff7e5f;
+            background: rgba(255, 126, 95, 0.8);
             color: white;
         }
 
@@ -296,7 +353,23 @@
         }
 
         .memory-card.matched .front {
-            background: lightgreen;
+            background: rgba(144, 238, 144, 0.8);
+        }
+                /* Buttons */
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
         }
 
         /* Advertisement footer */
@@ -314,16 +387,16 @@
             z-index: 1;
         }
 
-        /* Responsive adjustments */
+                /* Responsive adjustments */
         @media (max-width: 600px) {
             #emoji { font-size: 80px; }
             #quote { font-size: 18px; }
             .tab { padding: 8px 16px; }
             #clicker-area { width: 250px; height: 150px; }
-            #puzzle-grid { grid-template-columns: repeat(3, 40px); }
-            .puzzle-piece { width: 40px; height: 40px; font-size: 16px; }
-            #memory-grid { grid-template-columns: repeat(4, 40px); }
-            .memory-card { width: 40px; height: 40px; }
+            #puzzle-grid { grid-template-columns: repeat(3, 60px); }
+            .puzzle-piece { width: 60px; height: 60px; font-size: 18px; }
+            #memory-grid { grid-template-columns: repeat(4, 60px); }
+            .memory-card { width: 60px; height: 60px; }
         }
 
         @media (max-width: 400px) {
@@ -331,32 +404,22 @@
             #quote { font-size: 16px; }
             .tab { padding: 6px 12px; font-size: 14px; }
             #clicker-area { width: 200px; height: 120px; }
-            #clicker-emoji { font-size: 24px; }
+            #clicker-emoji { font-size: 30px; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Animated background -->
     <div class="background-animations">
-        <div class="star star1"></div>
-        <div class="star star2"></div>
-        <div class="star star3"></div>
-        <div class="star star4"></div>
-        <div class="star star5"></div>
-        <div class="star star6"></div>
-        <div class="star star7"></div>
-        <div class="star star8"></div>
-        <div class="star star9"></div>
-        <div class="star star10"></div>
-        <div class="planet planet1"></div>
-        <div class="planet planet2"></div>
-        <div class="planet planet3"></div>
-        <div class="planet planet4"></div>
-        <div class="planet planet5"></div>
+        <div class="particle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 20%; left: 25%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 30%; left: 35%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 40%; left: 45%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 50%; left: 55%; animation-delay: 4s;"></div>
     </div>
-
-    <!-- Main content -->
-    <div class="main-container">
+    
+     <div class="main-container">
         <!-- Advertisement above tabs -->
         <div class="dev">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
@@ -371,6 +434,9 @@
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
+
+    <!-- Main content -->
+    <div class="main-container">
         <div class="tabs">
             <div class="tab active" data-tab="quotes">Quotes</div>
             <div class="tab" data-tab="clicker">Clicker Game</div>
@@ -404,8 +470,10 @@
             <div id="memory-grid"></div>
             <p>Stage: <span id="memory-stage">1</span></p>
             <button id="reset-memory">Reset Game</button>
+            
         </div>
     </div>
+    
 
     <!-- Advertisement footer -->
     <div class="ad-footer">
