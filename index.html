@@ -389,18 +389,21 @@
             </div>
             <p>Score: <span id="clicker-score">0</span></p>
             <p>Stage: <span id="clicker-stage">1</span></p>
+            <button id="reset-clicker">Reset Game</button>
         </div>
         <div class="tab-content" id="puzzle-content">
             <h2>Puzzle Game</h2>
             <p>Slide the tiles to solve the puzzle!</p>
             <div id="puzzle-grid"></div>
             <p>Stage: <span id="puzzle-stage">1</span></p>
+            <button id="reset-puzzle">Reset Puzzle</button>
         </div>
         <div class="tab-content" id="memory-content">
             <h2>Memory Game</h2>
             <p>Match the pairs!</p>
             <div id="memory-grid"></div>
             <p>Stage: <span id="memory-stage">1</span></p>
+            <button id="reset-memory">Reset Game</button>
         </div>
     </div>
 
@@ -591,6 +594,14 @@
             moveClickerEmoji();
         });
 
+        document.getElementById('reset-clicker').addEventListener('click', () => {
+            clickerScore = 0;
+            clickerStage = 1;
+            clickerScoreDisplay.textContent = clickerScore;
+            clickerStageDisplay.textContent = clickerStage;
+            startClickerGame();
+        });
+
         startClickerGame();
 
         // Puzzle game logic
@@ -653,6 +664,8 @@
             return puzzleGrid[puzzleGrid.length - 1] === 0;
         }
 
+        document.getElementById('reset-puzzle').addEventListener('click', shufflePuzzle);
+
         shufflePuzzle();
 
         // Memory game logic
@@ -706,6 +719,13 @@
             }
             flippedCards = [];
         }
+
+        document.getElementById('reset-memory').addEventListener('click', () => {
+            memoryStage = 1;
+            memoryPairs = 2;
+            memoryStageDisplay.textContent = memoryStage;
+            createMemoryCards();
+        });
 
         createMemoryCards();
     </script>
