@@ -114,6 +114,7 @@
             min-height: 90px;
             margin-left: auto;
             margin-right: auto;
+            box-sizing: border-box;
         }
 
         /* Ensure the ad is responsive and fits the container */
@@ -123,17 +124,18 @@
             height: auto;
         }
 
-        /* Responsive adjustments for .dev */
+        /* Responsive adjustments for smartphones */
         @media (max-width: 768px) {
             .dev {
                 max-width: 100%;
+                padding: 10px;
                 min-height: 60px;
             }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             .dev {
-                padding: 10px;
+                padding: 8px;
                 min-height: 50px;
             }
         }
@@ -347,7 +349,6 @@
         <div class="star star7"></div>
         <div class="star star8"></div>
         <div class="star star9"></div>
-        <div class="star star10"></div>
         <div class="star star10"></div>
         <div class="planet planet1"></div>
         <div class="planet planet2"></div>
