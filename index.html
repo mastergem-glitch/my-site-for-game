@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google AdSense Ad Container -->
-<div class="ad-container">
-    <!-- AdSense Ad Unit -->
-    <div class="ad-unit">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7107573195140676"
-             data-ad-slot="YOUR_AD_SLOT_ID"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-    </div>
-</div>
-
-<!-- AdSense Script (Place in <head> or before </body>) -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
-
-<!-- AdSense Initialization (Place after the <ins> tag) -->
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
   
+    <!-- Animated background -->
+    <div class="background-animations">
+        ...
+    </div>
+
+    <!-- Google Ads script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676" crossorigin="anonymous"></script>
+
+    <!-- Main content -->
+    <div class="main-container">
+        ...
+    </div>
+
+    <!-- Advertisement footer -->
+    <div class="ad-footer">
+        <p>Advertisement</p>
+    </div>
+
+    ...
+
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motivational Quote Generator with Mini-Games</title>
     <style>
+    
+    /* Advertisement footer */
+.ad-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Ensure it spans the full width */
+    width: 100%; /* Full width */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 10px; /* Optional: add padding for better appearance */
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    z-index: 1;
+}
         /* Reset and set gradient background */
         body {
             margin: 0;
@@ -317,39 +335,7 @@
             #clicker-area { width: 200px; height: 120px; }
             #clicker-emoji { font-size: 24px; }
         }
-
-        <!-- CSS Styling (Place in <style> tag or external CSS file) -->
-<style>
-    .ad-container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 20px auto;
-        text-align: center;
-    }
-
-    .ad-unit {
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-    }
-
-    ins.adsbygoogle {
-        display: block;
-        width: 100% !important;
-        max-width: 100%;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 600px) {
-        .ad-container { width: 95%; }
-        .ad-unit { padding: 8px; }
-    }
-
-    @media (max-width: 400px) {
-        .ad-unit { padding: 5px; }
-    }
-</style>   
-</style>
+    </style>
 </head>
 <body>
     <!-- Animated background -->
