@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
-     crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmic Motivation Engine</title>
     <style>
@@ -13,12 +12,14 @@
         }
 
         body {
-            overflow: hidden;
+            overflow: auto;
             font-family: 'Poppins', sans-serif;
+            width: 100%;
+            height: 100%;
         }
 
         .infinite-scroll {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 400%;
@@ -26,7 +27,6 @@
             background: linear-gradient(-45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            overflow: auto;
         }
 
         @keyframes gradientBG {
@@ -35,22 +35,8 @@
             100% { background-position: 0% 50%; }
         }
 
-        .cosmic-particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: cosmicFloat 5s infinite ease-in-out;
-        }
-
-        @keyframes cosmicFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            25% { transform: translate(100px, -50px) scale(1.2); opacity: 0.6; }
-            50% { transform: translate(-80px, 80px) scale(0.8); opacity: 0.4; }
-            75% { transform: translate(-100px, -100px) scale(1.1); opacity: 0.7; }
-        }
-
         .main-universe {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -62,6 +48,7 @@
             padding: 40px;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
         }
 
         .quantum-tabs {
@@ -79,12 +66,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .quantum-tab:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
+            color: white;
         }
 
         .quantum-tab.active {
@@ -100,24 +82,21 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 25px;
+            color: white;
         }
 
         .dimension-content.active {
             display: block;
-            animation: dimensionShift 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes dimensionShift {
-            0% { opacity: 0; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1); }
         }
 
         #quantum-emoji {
             font-size: 120px;
             cursor: pointer;
             animation: quantumWiggle 3s infinite;
-            transition: all 0.3s ease;
             filter: drop-shadow(0 0 10px rgba(255, 126, 95, 0.5));
+            text-align: center;
+            display: block;
+            margin: 0 auto;
         }
 
         @keyframes quantumWiggle {
@@ -136,6 +115,7 @@
             transition: all 0.6s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
+            text-align: center;
         }
 
         .game-container {
@@ -161,6 +141,7 @@
             font-size: 50px;
             cursor: pointer;
             animation: quantumPulse 1.5s infinite;
+            transition: all 0.1s;
         }
 
         @keyframes quantumPulse {
@@ -185,8 +166,7 @@
             justify-content: center;
             font-size: 28px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
         .memory-grid {
@@ -203,9 +183,7 @@
             border-radius: 15px;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s ease;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .memory-front, .memory-back {
@@ -238,10 +216,6 @@
             transform: rotateY(180deg);
         }
 
-        .memory-card.harmonized .memory-front {
-            background: rgba(144, 238, 144, 0.8);
-        }
-
         .quantum-button {
             background: rgba(255, 255, 255, 0.2);
             border: none;
@@ -249,13 +223,7 @@
             border-radius: 10px;
             color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .quantum-button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-3px);
+            margin-top: 20px;
         }
 
         @media (max-width: 768px) {
@@ -273,74 +241,64 @@
             .memory-grid { grid-template-columns: repeat(4, 70px); }
             .memory-card { width: 70px; height: 70px; }
         }
-
-        @media (max-width: 480px) {
-            .quantum-tabs { flex-wrap: wrap; }
-            .quantum-tab { width: 100%; text-align: center; }
-
-            #clicker-area { width: 250px; height: 180px; }
-            #clicker-emoji { font-size: 40px; }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="infinite-scroll">
-        <div class="cosmic-particle" style="top:10%;left:15%;width:8px;height:8px;animation-delay:0s"></div>
-        <div class="cosmic-particle" style="top:30%;left:70%;width:12px;height:12px;animation-delay:1.2s"></div>
-        <div class="cosmic-particle" style="top:60%;left:40%;width:6px;height:6px;animation-delay:2.5s"></div>
-        <div class="cosmic-particle" style="top:80%;left:20%;width:10px;height:10px;animation-delay:3.8s"></div>
-
         <div class="main-universe">
             <div class="quantum-tabs">
-                <div class="quantum-tab active" data-tab="quotes">Quantum Quotes</div>
-                <div class="quantum-tab" data-tab="clicker">Chaos Clicker</div>
-                <div class="quantum-tab" data-tab="puzzle">Puzzle Dimension</div>
-                <div class="quantum-tab" data-tab="memory">Memory Matrix</div>
+                <div class="quantum-tab active" data-tab="quotes">Quotes</div>
+                <div class="quantum-tab" data-tab="clicker">Clicker</div>
+                <div class="quantum-tab" data-tab="puzzle">Puzzle</div>
+                <div class="quantum-tab" data-tab="memory">Memory</div>
             </div>
 
+            <!-- Quotes Tab -->
             <div class="dimension-content active" id="quotes-content">
-                <div id="quantum-emoji">🌀</div>
+                <span id="quantum-emoji">🌀</span>
                 <div id="quantum-quote">Click the vortex to receive cosmic wisdom!</div>
             </div>
 
+            <!-- Clicker Game -->
             <div class="dimension-content" id="clicker-content">
                 <div class="game-container">
                     <h2>Chaos Clicker</h2>
-                    <p>Chase the quantum particle!</p>
                     <div id="clicker-area">
                         <div id="clicker-emoji">⚡</div>
                     </div>
-                    <p>Energy Level: <span id="clicker-score">0</span></p>
-                    <p>Quantum State: <span id="clicker-stage">1</span></p>
-                    <button class="quantum-button" id="reset-clicker">Reset Field</button>
+                    <p>Score: <span id="clicker-score">0</span></p>
+                    <p>Stage: <span id="clicker-stage">1</span></p>
+                    <button class="quantum-button" id="reset-clicker">Reset</button>
                 </div>
             </div>
 
+            <!-- Puzzle Game -->
             <div class="dimension-content" id="puzzle-content">
                 <div class="game-container">
-                    <h2>Puzzle Dimension</h2>
-                    <p>Align the cosmic fragments!</p>
+                    <h2>Cosmic Puzzle</h2>
                     <div class="puzzle-grid" id="puzzle-grid"></div>
-                    <p>Dimension Level: <span id="puzzle-stage">1</span></p>
-                    <button class="quantum-button" id="reset-puzzle">Reset Reality</button>
+                    <p>Stage: <span id="puzzle-stage">1</span></p>
+                    <button class="quantum-button" id="reset-puzzle">Reset</button>
                 </div>
             </div>
 
+            <!-- Memory Game -->
             <div class="dimension-content" id="memory-content">
                 <div class="game-container">
                     <h2>Memory Matrix</h2>
-                    <p>Match the quantum signatures!</p>
                     <div class="memory-grid" id="memory-grid"></div>
-                    <p>Matrix Tier: <span id="memory-stage">1</span></p>
-                    <button class="quantum-button" id="reset-memory">Reset Matrix</button>
+                    <p>Stage: <span id="memory-stage">1</span></p>
+                    <button class="quantum-button" id="reset-memory">Reset</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Motivational Quotes
         const quantumWisdom = [
+            { quote: "The only way to do great work is to love what you do. - Steve Jobs", emoji: "❤️" },
             { quote: "The universe rewards bold actions. Take the leap! 🌌", emoji: "🚀" },
             { quote: "Your potential is infinite like the cosmos. 🌠", emoji: "💫" },
             { quote: "Challenges are gravity wells - escape velocity comes from persistence. ⚛️", emoji: "🌪️" },
@@ -444,149 +402,133 @@
             { quote: "Chase your dreams like your life depends on it.", emoji: "🏃" },
             { quote: "Keep going. Your future self will thank you.", emoji: "⏳" },
             { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }
+                    //Add all other quotes here...
         ];
-
-        let currentReality = {
-            quoteIndex: -1,
-            clickerEnergy: 0,
-            quantumState: 1,
-            puzzleDimension: 1,
-            memoryMatrix: 1
-        };
 
         // Tab System
         document.querySelectorAll('.quantum-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.quantum-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                const reality = tab.dataset.tab;
-                document.querySelectorAll('.dimension-content').forEach(d => d.classList.remove('active'));
-                document.getElementById(`${reality}-content`).classList.add('active');
+                const tabId = tab.dataset.tab;
+                document.querySelectorAll('.dimension-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabId}-content`).classList.add('active');
             });
         });
 
         // Quote Generator
         document.getElementById('quantum-emoji').addEventListener('click', function() {
-            const quoteDisplay = document.getElementById('quantum-quote');
-            const emojiPortal = this;
-            
-            quoteDisplay.style.opacity = '0';
+            const quoteElement = document.getElementById('quantum-quote');
+            quoteElement.style.opacity = '0';
             setTimeout(() => {
-                let newIndex;
-                do {
-                    newIndex = Math.floor(Math.random() * quantumWisdom.length);
-                } while(newIndex === currentReality.quoteIndex);
-                
-                currentReality.quoteIndex = newIndex;
-                emojiPortal.textContent = quantumWisdom[newIndex].emoji;
-                quoteDisplay.textContent = quantumWisdom[newIndex].quote;
-                quoteDisplay.style.opacity = '1';
-            }, 600);
+                const randomIndex = Math.floor(Math.random() * quantumWisdom.length);
+                this.textContent = quantumWisdom[randomIndex].emoji;
+                quoteElement.textContent = quantumWisdom[randomIndex].quote;
+                quoteElement.style.opacity = '1';
+            }, 500);
         });
 
-        // Chaos Clicker
-        let chaosInterval;
-        const quantumParticle = document.getElementById('clicker-emoji');
+        // Clicker Game
+        let clickerScore = 0;
+        let clickerStage = 1;
+        let clickerInterval;
+        const clickerEmoji = document.getElementById('clicker-emoji');
         
-        function moveParticle() {
-            const field = document.getElementById('clicker-area');
-            const maxX = field.clientWidth - quantumParticle.offsetWidth;
-            const maxY = field.clientHeight - quantumParticle.offsetHeight;
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-            quantumParticle.style.left = `${x}px`;
-            quantumParticle.style.top = `${y}px`;
+        function moveEmoji() {
+            const area = document.getElementById('clicker-area');
+            const x = Math.random() * (area.clientWidth - 50);
+            const y = Math.random() * (area.clientHeight - 50);
+            clickerEmoji.style.left = `${x}px`;
+            clickerEmoji.style.top = `${y}px`;
         }
 
-        quantumParticle.addEventListener('click', () => {
-            currentReality.clickerEnergy++;
-            document.getElementById('clicker-score').textContent = currentReality.clickerEnergy;
-            
-            if(currentReality.clickerEnergy % 10 === 0) {
-                currentReality.quantumState++;
-                document.getElementById('clicker-stage').textContent = currentReality.quantumState;
-                clearInterval(chaosInterval);
-                chaosInterval = setInterval(moveParticle, Math.max(100, 1000 / currentReality.quantumState));
+        clickerEmoji.addEventListener('click', () => {
+            clickerScore++;
+            document.getElementById('clicker-score').textContent = clickerScore;
+            if(clickerScore % 10 === 0) {
+                clickerStage++;
+                document.getElementById('clicker-stage').textContent = clickerStage;
+                clearInterval(clickerInterval);
+                clickerInterval = setInterval(moveEmoji, Math.max(100, 1000 / clickerStage));
             }
-            moveParticle();
+            moveEmoji();
         });
 
-        // Initialize Clicker
-        chaosInterval = setInterval(moveParticle, 1000);
+        clickerInterval = setInterval(moveEmoji, 1000);
         document.getElementById('reset-clicker').addEventListener('click', () => {
-            currentReality.clickerEnergy = 0;
-            currentReality.quantumState = 1;
+            clickerScore = 0;
+            clickerStage = 1;
             document.getElementById('clicker-score').textContent = '0';
             document.getElementById('clicker-stage').textContent = '1';
-            clearInterval(chaosInterval);
-            chaosInterval = setInterval(moveParticle, 1000);
+            clearInterval(clickerInterval);
+            clickerInterval = setInterval(moveEmoji, 1000);
         });
 
-        // Puzzle Dimension
-        const puzzleMatrix = [];
-        const puzzleGrid = document.getElementById('puzzle-grid');
-        
-        function fisherYatesShuffle(array) {
-            for(let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+        // Puzzle Game
+        const puzzleSize = 3;
+        let puzzleGrid = [];
+        const puzzleElements = document.getElementById('puzzle-grid');
 
-        function createPuzzleReality() {
-            puzzleGrid.innerHTML = '';
-            const size = 3;
-            puzzleMatrix.splice(0, puzzleMatrix.length, ...[...Array(size*size).keys()].map(x => x + 1));
-            puzzleMatrix[size*size - 1] = 0;
+        function createPuzzle() {
+            puzzleElements.innerHTML = '';
+            puzzleGrid = [...Array(puzzleSize*puzzleSize).keys()].map(x => x + 1);
+            puzzleGrid[puzzleGrid.length-1] = 0;
             
-            fisherYatesShuffle(puzzleMatrix);
-            
-            puzzleMatrix.forEach((num, index) => {
+            // Fisher-Yates shuffle
+            for(let i = puzzleGrid.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [puzzleGrid[i], puzzleGrid[j]] = [puzzleGrid[j], puzzleGrid[i]];
+            }
+
+            puzzleGrid.forEach((num, index) => {
                 const piece = document.createElement('div');
                 piece.className = 'puzzle-piece';
                 piece.textContent = num || '';
-                piece.addEventListener('click', () => shiftReality(index));
-                puzzleGrid.appendChild(piece);
+                piece.addEventListener('click', () => movePiece(index));
+                puzzleElements.appendChild(piece);
             });
         }
 
-        function shiftReality(index) {
-            const emptyIndex = puzzleMatrix.indexOf(0);
-            const rowSize = 3;
+        function movePiece(index) {
+            const emptyIndex = puzzleGrid.indexOf(0);
+            const rowSize = puzzleSize;
             
             if(Math.abs(index - emptyIndex) === rowSize || 
                (Math.abs(index - emptyIndex) === 1 && Math.floor(index/rowSize) === Math.floor(emptyIndex/rowSize))) {
-                [puzzleMatrix[index], puzzleMatrix[emptyIndex]] = [puzzleMatrix[emptyIndex], puzzleMatrix[index]];
-                createPuzzleReality();
+                [puzzleGrid[index], puzzleGrid[emptyIndex]] = [puzzleGrid[emptyIndex], puzzleGrid[index]];
+                createPuzzle();
                 
-                if(puzzleMatrix.every((val, i) => val === i+1 || (i === puzzleMatrix.length-1 && val === 0))) {
-                    currentReality.puzzleDimension++;
-                    document.getElementById('puzzle-stage').textContent = currentReality.puzzleDimension;
-                    setTimeout(createPuzzleReality, 1000);
+                if(puzzleGrid.every((val, i) => val === i+1 || (i === puzzleGrid.length-1 && val === 0))) {
+                    document.getElementById('puzzle-stage').textContent = 
+                        parseInt(document.getElementById('puzzle-stage').textContent) + 1;
+                    setTimeout(createPuzzle, 1000);
                 }
             }
         }
 
-        createPuzzleReality();
-        document.getElementById('reset-puzzle').addEventListener('click', createPuzzleReality);
+        createPuzzle();
+        document.getElementById('reset-puzzle').addEventListener('click', createPuzzle);
 
-        // Memory Matrix
+        // Memory Game
         const memorySymbols = ['🌌', '🌠', '⚛️', '🌀', '💫', '🌪️'];
+        let memoryStage = 1;
         let memoryPairs = 2;
         let flippedCards = [];
-        
-        function createMemoryField() {
-            const grid = document.getElementById('memory-grid');
-            grid.innerHTML = '';
+        const memoryBoard = document.getElementById('memory-grid');
+
+        function createMemoryGame() {
+            memoryBoard.innerHTML = '';
             const symbols = memorySymbols.slice(0, memoryPairs);
             const cards = [...symbols, ...symbols];
             
-            // Proper Fisher-Yates shuffle
+            // Fisher-Yates shuffle
             for(let i = cards.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [cards[i], cards[j]] = [cards[j], cards[i]];
             }
-            
+
             cards.forEach(symbol => {
                 const card = document.createElement('div');
                 card.className = 'memory-card';
@@ -594,23 +536,23 @@
                     <div class="memory-front">${symbol}</div>
                     <div class="memory-back">?</div>
                 `;
-                card.addEventListener('click', () => revealCard(card, symbol));
-                grid.appendChild(card);
+                card.addEventListener('click', () => flipCard(card, symbol));
+                memoryBoard.appendChild(card);
             });
         }
 
-        function revealCard(card, symbol) {
-            if(flippedCards.length < 2 && !card.classList.contains('revealed') && !card.classList.contains('harmonized')) {
+        function flipCard(card, symbol) {
+            if(!card.classList.contains('revealed') && flippedCards.length < 2) {
                 card.classList.add('revealed');
-                flippedCards.push({ card, symbol });
+                flippedCards.push({card, symbol});
                 
                 if(flippedCards.length === 2) {
-                    setTimeout(checkHarmony, 500);
+                    setTimeout(checkMatch, 500);
                 }
             }
         }
 
-        function checkHarmony() {
+        function checkMatch() {
             const [card1, card2] = flippedCards;
             
             if(card1.symbol === card2.symbol) {
@@ -618,10 +560,10 @@
                 card2.card.classList.add('harmonized');
                 
                 if(document.querySelectorAll('.memory-card:not(.harmonized)').length === 0) {
-                    currentReality.memoryMatrix++;
-                    document.getElementById('memory-stage').textContent = currentReality.memoryMatrix;
+                    memoryStage++;
                     memoryPairs = Math.min(memoryPairs + 1, memorySymbols.length);
-                    setTimeout(createMemoryField, 1000);
+                    document.getElementById('memory-stage').textContent = memoryStage;
+                    setTimeout(createMemoryGame, 1000);
                 }
             } else {
                 flippedCards.forEach(c => c.card.classList.remove('revealed'));
@@ -629,12 +571,12 @@
             flippedCards = [];
         }
 
-        createMemoryField();
+        createMemoryGame();
         document.getElementById('reset-memory').addEventListener('click', () => {
+            memoryStage = 1;
             memoryPairs = 2;
-            currentReality.memoryMatrix = 1;
             document.getElementById('memory-stage').textContent = '1';
-            createMemoryField();
+            createMemoryGame();
         });
     </script>
 </body>
