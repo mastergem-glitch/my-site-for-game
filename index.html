@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
+<head>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
      crossorigin="anonymous"></script>    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmic Motivation Engine</title>
     <style>
         * {
@@ -16,15 +17,21 @@
         body {
             overflow: auto;
             width: 100%;
-            height: 100%;
-            -webkit-tap-highlight-color: transparent;
-            background: pink(-45deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            background: linear-gradient(-45deg, 
+                #ff6b6b, 
+                #4ecdc4, 
+                #45b7d1, 
+                #96f2d7,
+                #ff9ff3,
+                #f368e0,
+                #ff6b6b);
             background-size: 400% 400%;
-            animation: galaxyFlow 20s ease infinite;
+            animation: gradientFlow 20s ease infinite;
             position: relative;
         }
 
-        @keyframes galaxyFlow {
+        @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -39,9 +46,10 @@
 
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255,255,255,0.8);
             border-radius: 50%;
             animation: particleFloat linear infinite;
+            filter: blur(1px);
         }
 
         @keyframes particleFloat {
@@ -54,9 +62,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 95%;
-            max-width: 500px;
-            background: rgba(17, 17, 34, 0.7);
-            backdrop-filter: blur(25px) saturate(180%);
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
             border-radius: 20px;
             padding: 25px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -67,59 +75,39 @@
         .quantum-tabs {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .quantum-tab {
-            padding: 16px 28px;
+            padding: 15px 25px;
             background: linear-gradient(135deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8));
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 16px;
+            color: white;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            border: none;
         }
 
-        .quantum-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.6s;
-        }
-
-        .quantum-tab:hover::before { left: 100%; }
         .quantum-tab.active {
             background: linear-gradient(135deg, rgba(255, 126, 95, 0.9), rgba(254, 180, 123, 0.9));
             box-shadow: 0 4px 25px rgba(255, 126, 95, 0.4);
-            transform: translateY(-2px);
         }
 
         .dimension-content {
             display: none;
-            background: rgba(15, 20, 10, 0.15);
+            background: rgba(0, 0, 0, 0.15);
             padding: 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
+            border-radius: 15px;
             color: white;
-            animation: contentFade 0.6s ease;
+            animation: fadeIn 0.5s ease;
         }
 
-        @keyframes contentFade {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dimension-content.active { display: block; }
@@ -127,91 +115,74 @@
         #quantum-emoji {
             font-size: 80px;
             cursor: pointer;
-            animation: quantumOrbit 8s linear infinite;
-            filter: drop-shadow(0 0 15px rgba(42, 42, 114, 0.5));
-            margin: 20px auto;
+            animation: spin 8s linear infinite;
             text-align: center;
+            margin: 20px 0;
         }
 
-        @keyframes quantumOrbit {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
         }
 
         #quantum-quote {
-            font-size: 17px;
-            background: linear-gradient(145deg, rgba(42, 42, 114, 0.3), rgba(0, 159, 253, 0.3));
-            padding: 18px;
-            border-radius: 14px;
-            margin: 18px auto;
-            line-height: 1.6;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
         }
 
         .game-container {
-            background: rgba(0, 0, 0, 0.2);
             padding: 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            margin: 20px 0;
         }
 
         #clicker-area {
             width: 100%;
             height: 200px;
             border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 18px;
+            border-radius: 15px;
             position: relative;
-            margin: 20px auto;
-            background: rgba(0, 0, 0, 0.15);
-            touch-action: none;
+            margin: 20px 0;
         }
 
         #clicker-emoji {
             position: absolute;
             font-size: 60px;
             cursor: pointer;
-            animation: quantumPulse 1.5s infinite, emojiGlow 2s ease-in-out infinite;
+            animation: pulse 1.5s infinite;
         }
 
-        @keyframes quantumPulse {
+        @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
-        }
-
-        @keyframes emojiGlow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 159, 253, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(0, 159, 253, 0.8)); }
         }
 
         .puzzle-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin: 20px auto;
+            margin: 20px 0;
         }
 
         .puzzle-piece {
-            width: 100%;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             cursor: pointer;
-            color: white;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s;
         }
 
         .puzzle-piece.empty {
             background: transparent;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border: 2px dashed rgba(255,255,255,0.3);
             cursor: default;
         }
 
@@ -219,14 +190,13 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin: 20px auto;
+            margin: 20px 0;
         }
 
         .memory-card {
-            width: 100%;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
             position: relative;
             cursor: pointer;
             overflow: hidden;
@@ -240,67 +210,52 @@
             align-items: center;
             justify-content: center;
             backface-visibility: hidden;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 28px;
-            border-radius: 14px;
+            transition: transform 0.6s;
+            font-size: 24px;
         }
 
         .memory-front {
             transform: rotateY(180deg);
-            background: linear-gradient(145deg, rgba(42, 42, 114, 0.3), rgba(0, 159, 253, 0.3));
+            background: rgba(255,255,255,0.1);
         }
 
         .memory-back {
             transform: rotateY(0deg);
-            background: linear-gradient(145deg, rgba(255,126,95,0.8), rgba(254,180,123,0.8));
+            background: rgba(255,126,95,0.8);
         }
 
         .memory-card.revealed .memory-front { transform: rotateY(0deg); }
         .memory-card.revealed .memory-back { transform: rotateY(180deg); }
 
         .quantum-button {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8));
             border: none;
-            padding: 18px 32px;
-            border-radius: 14px;
-            color: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 12px;
+            color: white;
             cursor: pointer;
-            margin-top: 25px;
-            font-size: 16px;
+            margin-top: 15px;
             width: 100%;
-            transition: all 0.3s ease;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.2s;
         }
 
-        .quantum-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.6s;
-        }
-
-        .quantum-button:hover::after { left: 100%; }
         .quantum-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(106, 17, 203, 0.4);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 18px;
         }
 
         @media (max-width: 480px) {
-            .main-universe { padding: 20px; }
-            .quantum-tab { padding: 14px 20px; font-size: 15px; }
+            .quantum-tab { padding: 12px 20px; }
             #quantum-emoji { font-size: 60px; }
-            #quantum-quote { font-size: 15px; }
-            #clicker-area { height: 160px; }
-            #clicker-emoji { font-size: 45px; }
-            .puzzle-piece { height: 70px; font-size: 20px; }
-            .memory-card { height: 70px; }
+            #quantum-quote { font-size: 1rem; }
+            .puzzle-piece, .memory-card { font-size: 20px; }
         }
     </style>
 </head>
@@ -309,18 +264,17 @@
     
     <div class="main-universe">
         <div class="quantum-tabs">
-            <div class="quantum-tab active" data-tab="quotes">Quotes</div>
-            <div class="quantum-tab" data-tab="clicker">Clicker</div>
-            <div class="quantum-tab" data-tab="puzzle">Puzzle</div>
-            <div class="quantum-tab" data-tab="memory">Memory</div>
-        </div>
-
-        <!-- Quotes Tab -->
+            <button class="quantum-tab active" data-tab="quotes">Quotes</button>
+            <button class="quantum-tab" data-tab="clicker">Clicker</button>
+            <button class="quantum-tab" data-tab="puzzle">Puzzle</button>
+            <button class="quantum-tab" data-tab="memory">Memory</button>
+        </div>   
+         
+     <!-- Quotes Tab -->
         <div class="dimension-content active" id="quotes-content">
-            <span id="quantum-emoji">🌀</span>
+            <div id="quantum-emoji">🌀</div>
             <div id="quantum-quote">Click the vortex to receive cosmic wisdom!</div>
         </div>
-
         <!-- Clicker Game -->
         <div class="dimension-content" id="clicker-content">
             <div class="game-container">
