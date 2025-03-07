@@ -2,25 +2,31 @@
 <html lang="en">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
-     crossorigin="anonymous"></script>  
-    <meta charset="UTF-8">
+     crossorigin="anonymous"></script>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motivational Quote Generator with Mini-Games</title>
+    <title>Cosmic Motivation Engine</title>
     <style>
-        /* Reset and set gradient background */
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .infinite-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 400%;
             background: linear-gradient(-45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-            color: white;
+            overflow: auto;
         }
 
         @keyframes gradientBG {
@@ -29,237 +35,214 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Background animations container */
-        .background-animations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        /* Particle effects */
-        .particle {
+        .cosmic-particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+            animation: cosmicFloat 5s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); opacity: 0.5; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-            100% { transform: translateY(0) scale(1); opacity: 0.5; }
+        @keyframes cosmicFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(100px, -50px) scale(1.2); opacity: 0.6; }
+            50% { transform: translate(-80px, 80px) scale(0.8); opacity: 0.4; }
+            75% { transform: translate(-100px, -100px) scale(1.1); opacity: 0.7; }
         }
 
-        /* Main container */
-        .main-container {
-            z-index: 1;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .main-universe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 800px;
             max-width: 90%;
-            width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Tabs */
-        .tabs {
+        .quantum-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .tab {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
+        .quantum-tab {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
             cursor: pointer;
-            margin: 0 5px;
-            border-radius: 10px;
-            color: white;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.4);
+        .quantum-tab:hover {
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
         }
 
-        .tab.active {
-            background: white;
+        .quantum-tab.active {
+            background: rgba(255, 255, 255, 0.9);
             color: #ff7e5f;
-            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 126, 95, 0.4);
         }
 
-        /* Tab content */
-        .tab-content {
+        .dimension-content {
             display: none;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            color: white;
-            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 25px;
         }
 
-        .tab-content.active {
+        .dimension-content.active {
             display: block;
+            animation: dimensionShift 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Quote generator styles */
-        #emoji {
-            font-size: 100px;
+        @keyframes dimensionShift {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        #quantum-emoji {
+            font-size: 120px;
             cursor: pointer;
-            animation: wiggle 2s infinite;
-            transition: transform 0.3s ease;
+            animation: quantumWiggle 3s infinite;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(255, 126, 95, 0.5));
         }
 
-        #emoji:hover {
-            transform: scale(1.1);
+        @keyframes quantumWiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            50% { transform: rotate(-5deg) scale(0.9); }
+            75% { transform: rotate(3deg) scale(1.05); }
         }
 
-        @keyframes wiggle {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(0deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
+        #quantum-quote {
+            font-size: 26px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px auto;
+            transition: all 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
 
-        #quote {
-            margin-top: 20px;
-            font-size: 24px;
-            color: white;
+        .game-container {
             background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
-            max-width: 80%;
-            text-align: center;
-            margin: 20px auto;
-            transition: opacity 0.6s;
-            font-weight: 300;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Game styles */
         #clicker-area {
-            width: 300px;
-            height: 200px;
-            position: relative;
+            width: 350px;
+            height: 250px;
             border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
+            border-radius: 20px;
+            position: relative;
             overflow: hidden;
-            margin: 0 auto;
+            margin: 20px auto;
             background: rgba(0, 0, 0, 0.2);
         }
 
         #clicker-emoji {
             position: absolute;
-            font-size: 40px;
+            font-size: 50px;
             cursor: pointer;
-            transition: all 0.1s;
-            animation: pulse 1.5s infinite;
+            animation: quantumPulse 1.5s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @keyframes quantumPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
-        #puzzle-grid {
+        .puzzle-grid {
             display: grid;
-            grid-template-columns: repeat(3, 80px);
-            grid-gap: 10px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 90px);
+            gap: 15px;
+            margin: 20px auto;
         }
 
         .puzzle-piece {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 28px;
             cursor: pointer;
-            font-size: 24px;
-            color: white;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .puzzle-piece:hover {
-            transform: scale(1.05);
-        }
-
-        #memory-grid {
+        .memory-grid {
             display: grid;
-            grid-template-columns: repeat(4, 80px);
-            grid-gap: 10px;
-            margin: 0 auto;
+            grid-template-columns: repeat(4, 90px);
+            gap: 15px;
+            margin: 20px auto;
         }
 
         .memory-card {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .memory-card:hover {
-            transform: scale(1.05);
-        }
-
-        .memory-card .front, .memory-card .back {
+        .memory-front, .memory-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
-            transition: transform 0.6s;
             display: flex;
             align-items: center;
             justify-content: center;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
             font-size: 24px;
-            border-radius: 10px;
         }
 
-        .memory-card .front {
+        .memory-front {
             transform: rotateY(180deg);
             background: rgba(255, 255, 255, 0.3);
         }
 
-        .memory-card .back {
+        .memory-back {
             transform: rotateY(0deg);
             background: rgba(255, 126, 95, 0.8);
-            color: white;
         }
 
-        .memory-card.flipped .front {
+        .memory-card.revealed .memory-front {
             transform: rotateY(0deg);
         }
 
-        .memory-card.flipped .back {
+        .memory-card.revealed .memory-back {
             transform: rotateY(180deg);
         }
 
-        .memory-card.matched .front {
+        .memory-card.harmonized .memory-front {
             background: rgba(144, 238, 144, 0.8);
         }
 
-        /* Buttons */
-        button {
+        .quantum-button {
             background: rgba(255, 255, 255, 0.2);
             border: none;
             padding: 10px 20px;
@@ -270,84 +253,97 @@
             font-weight: 500;
         }
 
-        button:hover {
+        .quantum-button:hover {
             background: rgba(255, 255, 255, 0.4);
             transform: translateY(-3px);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            #emoji { font-size: 80px; }
-            #quote { font-size: 18px; }
-            .tab { padding: 8px 16px; }
-            #clicker-area { width: 250px; height: 150px; }
-            #puzzle-grid { grid-template-columns: repeat(3, 60px); }
-            .puzzle-piece { width: 60px; height: 60px; font-size: 18px; }
-            #memory-grid { grid-template-columns: repeat(4, 60px); }
-            .memory-card { width: 60px; height: 60px; }
+        @media (max-width: 768px) {
+            .main-universe {
+                min-width: 90%;
+                padding: 25px;
+            }
+
+            #quantum-emoji { font-size: 80px; }
+            #quantum-quote { font-size: 20px; }
+
+            .puzzle-grid { grid-template-columns: repeat(3, 70px); }
+            .puzzle-piece { width: 70px; height: 70px; }
+
+            .memory-grid { grid-template-columns: repeat(4, 70px); }
+            .memory-card { width: 70px; height: 70px; }
         }
 
-        @media (max-width: 400px) {
-            #emoji { font-size: 60px; }
-            #quote { font-size: 16px; }
-            .tab { padding: 6px 12px; font-size: 14px; }
-            #clicker-area { width: 200px; height: 120px; }
-            #clicker-emoji { font-size: 30px; }
+        @media (max-width: 480px) {
+            .quantum-tabs { flex-wrap: wrap; }
+            .quantum-tab { width: 100%; text-align: center; }
+
+            #clicker-area { width: 250px; height: 180px; }
+            #clicker-emoji { font-size: 40px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Animated background -->
-    <div class="background-animations">
-        <div class="particle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
-        <div class="particle" style="top: 20%; left: 25%; animation-delay: 1s;"></div>
-        <div class="particle" style="top: 30%; left: 35%; animation-delay: 2s;"></div>
-        <div class="particle" style="top: 40%; left: 45%; animation-delay: 3s;"></div>
-        <div class="particle" style="top: 50%; left: 55%; animation-delay: 4s;"></div>
-    </div>
+    <div class="infinite-scroll">
+        <div class="cosmic-particle" style="top:10%;left:15%;width:8px;height:8px;animation-delay:0s"></div>
+        <div class="cosmic-particle" style="top:30%;left:70%;width:12px;height:12px;animation-delay:1.2s"></div>
+        <div class="cosmic-particle" style="top:60%;left:40%;width:6px;height:6px;animation-delay:2.5s"></div>
+        <div class="cosmic-particle" style="top:80%;left:20%;width:10px;height:10px;animation-delay:3.8s"></div>
 
-    <!-- Main content -->
-    <div class="main-container">
-        <div class="tabs">
-            <div class="tab active" data-tab="quotes">Quotes</div>
-            <div class="tab" data-tab="clicker">Clicker Game</div>
-            <div class="tab" data-tab="puzzle">Puzzle Game</div>
-            <div class="tab" data-tab="memory">Memory Game</div>
-        </div>
-        <div class="tab-content active" id="quotes-content">
-            <span id="emoji" role="button" aria-label="Click to get a motivational quote" tabindex="0">😂</span>
-            <div id="quote">Click the emoji to get a motivational quote!</div>
-        </div>
-        <div class="tab-content" id="clicker-content">
-            <h2>Clicker Game</h2>
-            <p>Click the moving emoji as many times as you can!</p>
-            <div id="clicker-area">
-                <span id="clicker-emoji">🏃</span>
+        <div class="main-universe">
+            <div class="quantum-tabs">
+                <div class="quantum-tab active" data-tab="quotes">Quantum Quotes</div>
+                <div class="quantum-tab" data-tab="clicker">Chaos Clicker</div>
+                <div class="quantum-tab" data-tab="puzzle">Puzzle Dimension</div>
+                <div class="quantum-tab" data-tab="memory">Memory Matrix</div>
             </div>
-            <p>Score: <span id="clicker-score">0</span></p>
-            <p>Stage: <span id="clicker-stage">1</span></p>
-            <button id="reset-clicker">Reset Game</button>
-        </div>
-        <div class="tab-content" id="puzzle-content">
-            <h2>Puzzle Game</h2>
-            <p>Slide the tiles to solve the puzzle!</p>
-            <div id="puzzle-grid"></div>
-            <p>Stage: <span id="puzzle-stage">1</span></p>
-            <button id="reset-puzzle">Reset Puzzle</button>
-        </div>
-        <div class="tab-content" id="memory-content">
-            <h2>Memory Game</h2>
-            <p>Match the pairs!</p>
-            <div id="memory-grid"></div>
-            <p>Stage: <span id="memory-stage">1</span></p>
-            <button id="reset-memory">Reset Game</button>
+
+            <div class="dimension-content active" id="quotes-content">
+                <div id="quantum-emoji">🌀</div>
+                <div id="quantum-quote">Click the vortex to receive cosmic wisdom!</div>
+            </div>
+
+            <div class="dimension-content" id="clicker-content">
+                <div class="game-container">
+                    <h2>Chaos Clicker</h2>
+                    <p>Chase the quantum particle!</p>
+                    <div id="clicker-area">
+                        <div id="clicker-emoji">⚡</div>
+                    </div>
+                    <p>Energy Level: <span id="clicker-score">0</span></p>
+                    <p>Quantum State: <span id="clicker-stage">1</span></p>
+                    <button class="quantum-button" id="reset-clicker">Reset Field</button>
+                </div>
+            </div>
+
+            <div class="dimension-content" id="puzzle-content">
+                <div class="game-container">
+                    <h2>Puzzle Dimension</h2>
+                    <p>Align the cosmic fragments!</p>
+                    <div class="puzzle-grid" id="puzzle-grid"></div>
+                    <p>Dimension Level: <span id="puzzle-stage">1</span></p>
+                    <button class="quantum-button" id="reset-puzzle">Reset Reality</button>
+                </div>
+            </div>
+
+            <div class="dimension-content" id="memory-content">
+                <div class="game-container">
+                    <h2>Memory Matrix</h2>
+                    <p>Match the quantum signatures!</p>
+                    <div class="memory-grid" id="memory-grid"></div>
+                    <p>Matrix Tier: <span id="memory-stage">1</span></p>
+                    <button class="quantum-button" id="reset-memory">Reset Matrix</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Array of 100 motivational quotes with emojis
-        const quotes = [
+        const quantumWisdom = [
+            { quote: "The universe rewards bold actions. Take the leap! 🌌", emoji: "🚀" },
+            { quote: "Your potential is infinite like the cosmos. 🌠", emoji: "💫" },
+            { quote: "Challenges are gravity wells - escape velocity comes from persistence. ⚛️", emoji: "🌪️" },
             { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill", emoji: "💪" },
             { quote: "Do what you can, with what you have, where you are. – Theodore Roosevelt", emoji: "🛠️" },
             { quote: "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt", emoji: "🤔" },
@@ -450,217 +446,179 @@
             { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }
         ];
 
-        // Tab switching logic
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.tab-content');
+        let currentReality = {
+            quoteIndex: -1,
+            clickerEnergy: 0,
+            quantumState: 1,
+            puzzleDimension: 1,
+            memoryMatrix: 1
+        };
 
-        tabs.forEach(tab => {
+        // Tab System
+        document.querySelectorAll('.quantum-tab').forEach(tab => {
             tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.quantum-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                const tabId = tab.getAttribute('data-tab');
-                contents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === `${tabId}-content`) {
-                        content.classList.add('active');
-                    }
-                });
+                const reality = tab.dataset.tab;
+                document.querySelectorAll('.dimension-content').forEach(d => d.classList.remove('active'));
+                document.getElementById(`${reality}-content`).classList.add('active');
             });
         });
 
-        // Set initial tab
-        tabs[0].classList.add('active');
-        document.getElementById('quotes-content').classList.add('active');
-
-        // Quote generator logic
-        let currentIndex = -1;
-        document.getElementById('emoji').addEventListener('click', function() {
-            const quoteDiv = document.getElementById('quote');
-            const emojiSpan = document.getElementById('emoji');
-
-            quoteDiv.style.opacity = '0';
-            setTimeout(function() {
-                let randomIndex;
+        // Quote Generator
+        document.getElementById('quantum-emoji').addEventListener('click', function() {
+            const quoteDisplay = document.getElementById('quantum-quote');
+            const emojiPortal = this;
+            
+            quoteDisplay.style.opacity = '0';
+            setTimeout(() => {
+                let newIndex;
                 do {
-                    randomIndex = Math.floor(Math.random() * quotes.length);
-                } while (randomIndex === currentIndex);
-                currentIndex = randomIndex;
-                const selectedQuote = quotes[randomIndex];
-                emojiSpan.textContent = selectedQuote.emoji;
-                quoteDiv.textContent = selectedQuote.quote;
-                quoteDiv.style.opacity = '1';
+                    newIndex = Math.floor(Math.random() * quantumWisdom.length);
+                } while(newIndex === currentReality.quoteIndex);
+                
+                currentReality.quoteIndex = newIndex;
+                emojiPortal.textContent = quantumWisdom[newIndex].emoji;
+                quoteDisplay.textContent = quantumWisdom[newIndex].quote;
+                quoteDisplay.style.opacity = '1';
             }, 600);
         });
 
-        // Clicker game logic
-        let clickerScore = 0;
-        let clickerStage = 1;
-        let clickerInterval;
-        const clickerEmoji = document.getElementById('clicker-emoji');
-        const clickerScoreDisplay = document.getElementById('clicker-score');
-        const clickerStageDisplay = document.getElementById('clicker-stage');
-
-        function moveClickerEmoji() {
-            const area = document.getElementById('clicker-area');
-            const maxX = area.clientWidth - 30;
-            const maxY = area.clientHeight - 30;
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-            clickerEmoji.style.left = `${x}px`;
-            clickerEmoji.style.top = `${y}px`;
+        // Chaos Clicker
+        let chaosInterval;
+        const quantumParticle = document.getElementById('clicker-emoji');
+        
+        function moveParticle() {
+            const field = document.getElementById('clicker-area');
+            const x = Math.random() * (field.clientWidth - 50);
+            const y = Math.random() * (field.clientHeight - 50);
+            quantumParticle.style.transform = `translate(${x}px, ${y}px)`;
         }
 
-        function startClickerGame() {
-            clearInterval(clickerInterval);
-            const intervalTime = Math.max(200, 1000 / clickerStage); // Minimum 200ms
-            clickerInterval = setInterval(moveClickerEmoji, intervalTime);
-        }
-
-        clickerEmoji.addEventListener('click', () => {
-            clickerScore++;
-            clickerScoreDisplay.textContent = clickerScore;
-            if (clickerScore % 10 === 0) {
-                clickerStage++;
-                clickerStageDisplay.textContent = clickerStage;
-                startClickerGame();
+        quantumParticle.addEventListener('click', () => {
+            currentReality.clickerEnergy++;
+            document.getElementById('clicker-score').textContent = currentReality.clickerEnergy;
+            
+            if(currentReality.clickerEnergy % 10 === 0) {
+                currentReality.quantumState++;
+                document.getElementById('clicker-stage').textContent = currentReality.quantumState;
+                clearInterval(chaosInterval);
+                chaosInterval = setInterval(moveParticle, Math.max(100, 1000 / currentReality.quantumState));
             }
-            moveClickerEmoji();
+            moveParticle();
         });
 
+        chaosInterval = setInterval(moveParticle, 1000);
         document.getElementById('reset-clicker').addEventListener('click', () => {
-            clickerScore = 0;
-            clickerStage = 1;
-            clickerScoreDisplay.textContent = clickerScore;
-            clickerStageDisplay.textContent = clickerStage;
-            startClickerGame();
+            currentReality.clickerEnergy = 0;
+            currentReality.quantumState = 1;
+            document.getElementById('clicker-score').textContent = '0';
+            document.getElementById('clicker-stage').textContent = '1';
+            clearInterval(chaosInterval);
+            chaosInterval = setInterval(moveParticle, 1000);
         });
 
-        startClickerGame();
-
-        // Puzzle game logic
-        const puzzleSize = 3;
-        let puzzleGrid = [];
-        let puzzleStage = 1;
-        const puzzleGridDiv = document.getElementById('puzzle-grid');
-        const puzzleStageDisplay = document.getElementById('puzzle-stage');
-
-        function createPuzzleGrid() {
-            puzzleGridDiv.innerHTML = '';
-            puzzleGridDiv.style.gridTemplateColumns = `repeat(${puzzleSize}, 80px)`;
-            puzzleGrid.forEach((number, index) => {
-                if (number !== 0) {
-                    const piece = document.createElement('div');
-                    piece.classList.add('puzzle-piece');
-                    piece.textContent = number;
-                    piece.addEventListener('click', () => movePuzzlePiece(index));
-                    puzzleGridDiv.appendChild(piece);
-                } else {
-                    const empty = document.createElement('div');
-                    puzzleGridDiv.appendChild(empty);
-                }
+        // Puzzle Dimension
+        const puzzleMatrix = [];
+        const puzzleGrid = document.getElementById('puzzle-grid');
+        
+        function createPuzzleReality() {
+            puzzleGrid.innerHTML = '';
+            const size = 3;
+            puzzleMatrix.splice(0, puzzleMatrix.length, ...[...Array(size*size).keys()].map(x => x + 1));
+            puzzleMatrix[puzzleMatrix.length-1] = 0;
+            
+            puzzleMatrix.sort(() => Math.random() - 0.5);
+            
+            puzzleMatrix.forEach((num, index) => {
+                const piece = document.createElement('div');
+                piece.className = 'puzzle-piece';
+                piece.textContent = num || '';
+                piece.addEventListener('click', () => shiftReality(index));
+                puzzleGrid.appendChild(piece);
             });
         }
 
-        function shufflePuzzle() {
-            puzzleGrid = [...Array(puzzleSize * puzzleSize).keys()].map(x => x + 1);
-            puzzleGrid[puzzleGrid.length - 1] = 0;
-            for (let i = puzzleGrid.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [puzzleGrid[i], puzzleGrid[j]] = [puzzleGrid[j], puzzleGrid[i]];
-            }
-            createPuzzleGrid();
-        }
-
-        function movePuzzlePiece(index) {
-            const emptyIndex = puzzleGrid.indexOf(0);
-            const rowSize = puzzleSize;
-            const row = Math.floor(index / rowSize);
-            const col = index % rowSize;
-            const emptyRow = Math.floor(emptyIndex / rowSize);
-            const emptyCol = emptyIndex % rowSize;
-            if ((Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
-                (Math.abs(col - emptyCol) === 1 && row === emptyRow)) {
-                [puzzleGrid[index], puzzleGrid[emptyIndex]] = [puzzleGrid[emptyIndex], puzzleGrid[index]];
-                createPuzzleGrid();
-                if (isPuzzleSolved()) {
-                    puzzleStage++;
-                    puzzleStageDisplay.textContent = puzzleStage;
-                    setTimeout(shufflePuzzle, 1000);
+        function shiftReality(index) {
+            const emptyIndex = puzzleMatrix.indexOf(0);
+            const rowSize = 3;
+            
+            if(Math.abs(index - emptyIndex) === rowSize || 
+               (Math.abs(index - emptyIndex) === 1 && Math.floor(index/rowSize) === Math.floor(emptyIndex/rowSize)) {
+                [puzzleMatrix[index], puzzleMatrix[emptyIndex]] = [puzzleMatrix[emptyIndex], puzzleMatrix[index]];
+                createPuzzleReality();
+                
+                if(puzzleMatrix.every((val, i) => val === i+1 || val === 0)) {
+                    currentReality.puzzleDimension++;
+                    document.getElementById('puzzle-stage').textContent = currentReality.puzzleDimension;
+                    setTimeout(createPuzzleReality, 1000);
                 }
             }
         }
 
-        function isPuzzleSolved() {
-            for (let i = 0; i < puzzleGrid.length - 1; i++) {
-                if (puzzleGrid[i] !== i + 1) return false;
-            }
-            return puzzleGrid[puzzleGrid.length - 1] === 0;
-        }
+        createPuzzleReality();
+        document.getElementById('reset-puzzle').addEventListener('click', createPuzzleReality);
 
-        document.getElementById('reset-puzzle').addEventListener('click', shufflePuzzle);
-
-        shufflePuzzle();
-
-        // Memory game logic
-        const memoryEmojis = ['🌟', '💪', '🚀', '🏆', '🎯', '🌈', '🔥', '💡', '❤️', '🌱'];
-        let memoryStage = 1;
+        // Memory Matrix
+        const memorySymbols = ['🌌', '🌠', '⚛️', '🌀', '💫', '🌪️'];
         let memoryPairs = 2;
         let flippedCards = [];
-        const memoryGrid = document.getElementById('memory-grid');
-        const memoryStageDisplay = document.getElementById('memory-stage');
-
-        function createMemoryCards() {
-            memoryGrid.innerHTML = '';
-            const emojis = memoryEmojis.slice(0, memoryPairs);
-            const cardValues = [...emojis, ...emojis];
-            cardValues.sort(() => Math.random() - 0.5);
-            memoryGrid.style.gridTemplateColumns = `repeat(${Math.ceil(Math.sqrt(cardValues.length))}, 80px)`;
-            cardValues.forEach(value => {
+        
+        function createMemoryField() {
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            const symbols = memorySymbols.slice(0, memoryPairs);
+            const cards = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+            
+            cards.forEach(symbol => {
                 const card = document.createElement('div');
-                card.classList.add('memory-card');
-                card.dataset.value = value;
-                card.innerHTML = `<span class="front">${value}</span><span class="back">?</span>`;
-                card.addEventListener('click', () => flipCard(card));
-                memoryGrid.appendChild(card);
+                card.className = 'memory-card';
+                card.innerHTML = `
+                    <div class="memory-front">${symbol}</div>
+                    <div class="memory-back">?</div>
+                `;
+                card.addEventListener('click', () => revealCard(card, symbol));
+                grid.appendChild(card);
             });
         }
 
-        function flipCard(card) {
-            if (flippedCards.length < 2 && !card.classList.contains('flipped') && !card.classList.contains('matched')) {
-                card.classList.add('flipped');
-                flippedCards.push(card);
-                if (flippedCards.length === 2) {
-                    setTimeout(checkMatch, 500);
+        function revealCard(card, symbol) {
+            if(flippedCards.length < 2 && !card.classList.contains('revealed')) {
+                card.classList.add('revealed');
+                flippedCards.push({ card, symbol });
+                
+                if(flippedCards.length === 2) {
+                    setTimeout(checkHarmony, 500);
                 }
             }
         }
 
-        function checkMatch() {
+        function checkHarmony() {
             const [card1, card2] = flippedCards;
-            if (card1.dataset.value === card2.dataset.value) {
-                card1.classList.add('matched');
-                card2.classList.add('matched');
-                if (document.querySelectorAll('.memory-card:not(.matched)').length === 0) {
-                    memoryStage++;
-                    memoryStageDisplay.textContent = memoryStage;
-                    memoryPairs = Math.min(memoryPairs + 1, memoryEmojis.length);
-                    setTimeout(createMemoryCards, 1000);
+            
+            if(card1.symbol === card2.symbol) {
+                card1.card.classList.add('harmonized');
+                card2.card.classList.add('harmonized');
+                
+                if(document.querySelectorAll('.memory-card:not(.harmonized)').length === 0) {
+                    currentReality.memoryMatrix++;
+                    document.getElementById('memory-stage').textContent = currentReality.memoryMatrix;
+                    memoryPairs = Math.min(memoryPairs + 1, memorySymbols.length);
+                    setTimeout(createMemoryField, 1000);
                 }
             } else {
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
+                flippedCards.forEach(c => c.card.classList.remove('revealed'));
             }
             flippedCards = [];
         }
 
+        createMemoryField();
         document.getElementById('reset-memory').addEventListener('click', () => {
-            memoryStage = 1;
             memoryPairs = 2;
-            memoryStageDisplay.textContent = memoryStage;
-            createMemoryCards();
+            currentReality.memoryMatrix = 1;
+            document.getElementById('memory-stage').textContent = '1';
+            createMemoryField();
         });
-
-        createMemoryCards();
     </script>
 </body>
 </html>
