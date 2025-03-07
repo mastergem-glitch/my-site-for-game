@@ -2,30 +2,24 @@
 <html lang="en">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
-     crossorigin="anonymous"></script>   
+     crossorigin="anonymous"></script>  
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmic Motivation Engine</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            touch-action: manipulation;
+            font-family: system-ui, -apple-system, sans-serif;
         }
 
         body {
             overflow: auto;
-            font-family: 'Poppins', sans-serif;
             width: 100%;
             height: 100%;
-        }
-
-        .infinite-scroll {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 400%;
-            height: 400%;
+            -webkit-tap-highlight-color: transparent;
             background: linear-gradient(-45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -42,50 +36,52 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            min-width: 300px;
-            max-width: 90%;
+            width: 95%;
+            max-width: 500px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 20px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             z-index: 2;
         }
 
         .quantum-tabs {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
         }
 
         .quantum-tab {
-            padding: 10px 20px;
+            padding: 12px 18px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            color: pink;
             font-size: 14px;
+            flex: 1 1 auto;
+            text-align: center;
         }
 
         .quantum-tab.active {
             background: rgba(255, 255, 255, 0.9);
             color: #ff7e5f;
-            box-shadow: 0 5px 20px rgba(255, 126, 95, 0.4);
+            box-shadow: 0 3px 15px rgba(255, 126, 95, 0.3);
         }
 
         .dimension-content {
             display: none;
             background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 20px;
+            padding: 15px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
+            margin-top: 15px;
             color: white;
         }
 
@@ -94,100 +90,108 @@
         }
 
         #quantum-emoji {
-            font-size: 80px;
+            font-size: 60px;
             cursor: pointer;
             animation: quantumWiggle 3s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 126, 95, 0.5));
+            filter: drop-shadow(0 0 8px rgba(255, 126, 95, 0.4));
+            margin: 10px auto;
+            user-select: none;
             text-align: center;
-            display: block;
-            margin: 0 auto;
         }
 
         @keyframes quantumWiggle {
             0%, 100% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(5deg) scale(1.1); }
-            50% { transform: rotate(-5deg) scale(0.9); }
-            75% { transform: rotate(3deg) scale(1.05); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(-5deg) scale(0.95); }
+            75% { transform: rotate(3deg) scale(1.02); }
         }
 
         #quantum-quote {
-            font-size: 18px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 15px auto;
-            transition: all 0.6s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px auto;
+            line-height: 1.4;
+            transition: all 0.4s ease;
             text-align: center;
         }
 
         .game-container {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         #clicker-area {
             width: 100%;
-            height: 200px;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
+            height: 180px;
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
             position: relative;
-            overflow: hidden;
-            margin: 15px auto;
-            background: rgba(0, 0, 0, 0.2);
+            margin: 12px auto;
+            background: rgba(0, 0, 0, 0.15);
+            touch-action: none;
         }
 
         #clicker-emoji {
             position: absolute;
-            font-size: 40px;
+            font-size: 50px;
             cursor: pointer;
             animation: quantumPulse 1.5s infinite;
-            transition: all 0.1s;
+            user-select: none;
+            touch-action: none;
         }
 
         @keyframes quantumPulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.15); }
         }
 
         .puzzle-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 15px auto;
+            gap: 8px;
+            margin: 12px auto;
         }
 
         .puzzle-piece {
             width: 100%;
-            height: 80px;
+            height: 70px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
             color: white;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+
+        .puzzle-piece.empty {
+            background: transparent;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            cursor: default;
         }
 
         .memory-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 15px auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 12px auto;
         }
 
         .memory-card {
             width: 100%;
-            height: 80px;
+            height: 70px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
+            border-radius: 12px;
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            user-select: none;
         }
 
         .memory-front, .memory-back {
@@ -223,88 +227,99 @@
         .quantum-button {
             background: rgba(255, 255, 255, 0.2);
             border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
             color: white;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 14px;
+            width: 100%;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
             .main-universe {
-                min-width: 90%;
-                padding: 15px;
+                padding: 12px;
+                border-radius: 15px;
             }
 
-            #quantum-emoji { font-size: 60px; }
-            #quantum-quote { font-size: 16px; }
+            .quantum-tab {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
 
-            .puzzle-piece { height: 70px; font-size: 20px; }
-            .memory-card { height: 70px; }
+            #quantum-emoji { font-size: 50px; }
+            #quantum-quote { font-size: 14px; }
+
+            #clicker-area { height: 150px; }
+            #clicker-emoji { font-size: 40px; }
+
+            .puzzle-piece { height: 60px; font-size: 18px; }
+            .memory-card { height: 60px; }
+        }
+
+        @media (max-width: 360px) {
+            .memory-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="infinite-scroll">
-        <div class="main-universe">
-            <div class="quantum-tabs">
-                <div class="quantum-tab active" data-tab="quotes">Quotes</div>
-                <div class="quantum-tab" data-tab="clicker">Clicker</div>
-                <div class="quantum-tab" data-tab="puzzle">Puzzle</div>
-                <div class="quantum-tab" data-tab="memory">Memory</div>
-            </div>
+    <div class="main-universe">
+        <div class="quantum-tabs">
+            <div class="quantum-tab active" data-tab="quotes">Quotes</div>
+            <div class="quantum-tab" data-tab="clicker">Clicker</div>
+            <div class="quantum-tab" data-tab="puzzle">Puzzle</div>
+            <div class="quantum-tab" data-tab="memory">Memory</div>
+        </div>
 
-            <!-- Quotes Tab -->
-            <div class="dimension-content active" id="quotes-content">
-                <span id="quantum-emoji">🌀</span>
-                <div id="quantum-quote">Click the vortex to receive cosmic wisdom!</div>
-            </div>
+        <!-- Quotes Tab -->
+        <div class="dimension-content active" id="quotes-content">
+            <span id="quantum-emoji">🌀</span>
+            <div id="quantum-quote">Click the vortex to receive cosmic wisdom!</div>
+        </div>
 
-            <!-- Clicker Game -->
-            <div class="dimension-content" id="clicker-content">
-                <div class="game-container">
-                    <h2>Chaos Clicker</h2>
-                    <div id="clicker-area">
-                        <div id="clicker-emoji">⚡</div>
-                    </div>
-                    <p>Score: <span id="clicker-score">0</span></p>
-                    <p>Stage: <span id="clicker-stage">1</span></p>
-                    <button class="quantum-button" id="reset-clicker">Reset</button>
+        <!-- Clicker Game -->
+        <div class="dimension-content" id="clicker-content">
+            <div class="game-container">
+                <h2>Chaos Clicker</h2>
+                <div id="clicker-area">
+                    <div id="clicker-emoji">⚡</div>
                 </div>
+                <p>Score: <span id="clicker-score">0</span></p>
+                <p>Stage: <span id="clicker-stage">1</span></p>
+                <button class="quantum-button" id="reset-clicker">Reset</button>
             </div>
+        </div>
 
-            <!-- Puzzle Game -->
-            <div class="dimension-content" id="puzzle-content">
-                <div class="game-container">
-                    <h2>Cosmic Puzzle</h2>
-                    <div class="puzzle-grid" id="puzzle-grid"></div>
-                    <p>Stage: <span id="puzzle-stage">1</span></p>
-                    <button class="quantum-button" id="reset-puzzle">Reset</button>
-                </div>
+        <!-- Puzzle Game -->
+        <div class="dimension-content" id="puzzle-content">
+            <div class="game-container">
+                <h2>Cosmic Puzzle</h2>
+                <div class="puzzle-grid" id="puzzle-grid"></div>
+                <p>Stage: <span id="puzzle-stage">1</span></p>
+                <button class="quantum-button" id="reset-puzzle">Reset</button>
             </div>
+        </div>
 
-            <!-- Memory Game -->
-            <div class="dimension-content" id="memory-content">
-                <div class="game-container">
-                    <h2>Memory Matrix</h2>
-                    <div class="memory-grid" id="memory-grid"></div>
-                    <p>Stage: <span id="memory-stage">1</span></p>
-                    <button class="quantum-button" id="reset-memory">Reset</button>
-                </div>
+        <!-- Memory Game -->
+        <div class="dimension-content" id="memory-content">
+            <div class="game-container">
+                <h2>Memory Matrix</h2>
+                <div class="memory-grid" id="memory-grid"></div>
+                <p>Stage: <span id="memory-stage">1</span></p>
+                <button class="quantum-button" id="reset-memory">Reset</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Motivational Quotes
+        // Complete 100 Motivational Quotes
         const quantumWisdom = [
             { quote: "The only way to do great work is to love what you do. - Steve Jobs", emoji: "❤️" },
-          
             { quote: "Your potential is infinite like the cosmos. 🌠", emoji: "💫" },
             { quote: "The universe rewards bold actions. Take the leap! 🌌", emoji: "🚀" },
-           
             { quote: "Challenges are gravity wells - escape velocity comes from persistence. ⚛️", emoji: "🌪️" },
             { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill", emoji: "💪" },
             { quote: "Do what you can, with what you have, where you are. – Theodore Roosevelt", emoji: "🛠️" },
@@ -362,7 +377,6 @@
             { quote: "Great things never come from comfort zones.", emoji: "🚀" },
             { quote: "Don’t wait for opportunity. Create it.", emoji: "🛠️" },
             { quote: "Leap, and the net will appear.", emoji: "🪂" },
-            { quote: "The only way to do great work is to love what you do. – Steve Jobs", emoji: "❤️" },
             { quote: "If it doesn’t challenge you, it won’t change you.", emoji: "🏋️" },
             { quote: "Go confidently in the direction of your dreams. Live the life you have imagined. – Henry David Thoreau", emoji: "🏃" },
             { quote: "Act as if it were impossible to fail. – Dorothea Brande", emoji: "🌟" },
@@ -405,40 +419,49 @@
             { quote: "The dream is free. The hustle is sold separately.", emoji: "💼" },
             { quote: "Chase your dreams like your life depends on it.", emoji: "🏃" },
             { quote: "Keep going. Your future self will thank you.", emoji: "⏳" },
-            { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }            // Add all other quotes here...
+            { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }
         ];
 
         // Tab System
         document.querySelectorAll('.quantum-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.quantum-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                const tabId = tab.dataset.tab;
-                document.querySelectorAll('.dimension-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(`${tabId}-content`).classList.add('active');
-            });
+            tab.addEventListener('click', handleTabClick);
+            tab.addEventListener('touchstart', handleTabClick);
         });
 
+        function handleTabClick(e) {
+            e.preventDefault();
+            document.querySelectorAll('.quantum-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const tabId = this.dataset.tab;
+            document.querySelectorAll('.dimension-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabId}-content`).classList.add('active');
+        }
+
         // Quote Generator
-        document.getElementById('quantum-emoji').addEventListener('click', function() {
+        const quantumEmoji = document.getElementById('quantum-emoji');
+        quantumEmoji.addEventListener('click', generateQuote);
+        quantumEmoji.addEventListener('touchstart', generateQuote);
+
+        function generateQuote(e) {
+            e.preventDefault();
             const quoteElement = document.getElementById('quantum-quote');
             quoteElement.style.opacity = '0';
             setTimeout(() => {
                 const randomIndex = Math.floor(Math.random() * quantumWisdom.length);
-                this.textContent = quantumWisdom[randomIndex].emoji;
+                quantumEmoji.textContent = quantumWisdom[randomIndex].emoji;
                 quoteElement.textContent = quantumWisdom[randomIndex].quote;
                 quoteElement.style.opacity = '1';
             }, 500);
-        });
+        }
 
         // Clicker Game
         let clickerScore = 0;
         let clickerStage = 1;
         let clickerInterval;
         const clickerEmoji = document.getElementById('clicker-emoji');
-        
+
         function moveEmoji() {
             const area = document.getElementById('clicker-area');
             const x = Math.random() * (area.clientWidth - 50);
@@ -447,7 +470,8 @@
             clickerEmoji.style.top = `${y}px`;
         }
 
-        clickerEmoji.addEventListener('click', () => {
+        function handleClickerTap(e) {
+            e.preventDefault();
             clickerScore++;
             document.getElementById('clicker-score').textContent = clickerScore;
             if(clickerScore % 10 === 0) {
@@ -457,8 +481,10 @@
                 clickerInterval = setInterval(moveEmoji, Math.max(100, 1000 / clickerStage));
             }
             moveEmoji();
-        });
+        }
 
+        clickerEmoji.addEventListener('click', handleClickerTap);
+        clickerEmoji.addEventListener('touchstart', handleClickerTap);
         clickerInterval = setInterval(moveEmoji, 1000);
         document.getElementById('reset-clicker').addEventListener('click', () => {
             clickerScore = 0;
@@ -473,41 +499,70 @@
         const puzzleSize = 3;
         let puzzleGrid = [];
         const puzzleElements = document.getElementById('puzzle-grid');
+        let emptyIndex = 8;
 
         function createPuzzle() {
-            puzzleElements.innerHTML = '';
-            puzzleGrid = [...Array(puzzleSize*puzzleSize).keys()].map(x => x + 1);
-            puzzleGrid[puzzleGrid.length-1] = 0;
+            puzzleGrid = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+            emptyIndex = 8;
             
-            // Fisher-Yates shuffle
-            for(let i = puzzleGrid.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [puzzleGrid[i], puzzleGrid[j]] = [puzzleGrid[j], puzzleGrid[i]];
+            // Make 100 random valid moves to shuffle
+            for(let i = 0; i < 100; i++) {
+                const possibleMoves = getValidMoves();
+                const move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+                swapTiles(move);
             }
+            renderPuzzle();
+        }
 
+        function getValidMoves() {
+            const moves = [];
+            const row = Math.floor(emptyIndex / puzzleSize);
+            const col = emptyIndex % puzzleSize;
+
+            if(row > 0) moves.push(emptyIndex - puzzleSize); // Up
+            if(row < puzzleSize - 1) moves.push(emptyIndex + puzzleSize); // Down
+            if(col > 0) moves.push(emptyIndex - 1); // Left
+            if(col < puzzleSize - 1) moves.push(emptyIndex + 1); // Right
+
+            return moves;
+        }
+
+        function swapTiles(index) {
+            [puzzleGrid[emptyIndex], puzzleGrid[index]] = [puzzleGrid[index], puzzleGrid[emptyIndex]];
+            emptyIndex = index;
+        }
+
+        function renderPuzzle() {
+            puzzleElements.innerHTML = '';
             puzzleGrid.forEach((num, index) => {
                 const piece = document.createElement('div');
-                piece.className = 'puzzle-piece';
+                piece.className = `puzzle-piece ${num === 0 ? 'empty' : ''}`;
                 piece.textContent = num || '';
-                piece.addEventListener('click', () => movePiece(index));
+                if(num !== 0) {
+                    piece.addEventListener('click', () => movePiece(index));
+                    piece.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        movePiece(index);
+                    });
+                }
                 puzzleElements.appendChild(piece);
             });
         }
 
         function movePiece(index) {
-            const emptyIndex = puzzleGrid.indexOf(0);
-            const rowSize = puzzleSize;
-            
-            if(Math.abs(index - emptyIndex) === rowSize || 
-               (Math.abs(index - emptyIndex) === 1 && Math.floor(index/rowSize) === Math.floor(emptyIndex/rowSize))) {
-                [puzzleGrid[index], puzzleGrid[emptyIndex]] = [puzzleGrid[emptyIndex], puzzleGrid[index]];
-                createPuzzle();
-                
-                if(puzzleGrid.every((val, i) => val === i+1 || (i === puzzleGrid.length-1 && val === 0))) {
-                    document.getElementById('puzzle-stage').textContent = 
-                        parseInt(document.getElementById('puzzle-stage').textContent) + 1;
-                    setTimeout(createPuzzle, 1000);
-                }
+            const validMoves = getValidMoves();
+            if(validMoves.includes(index)) {
+                swapTiles(index);
+                renderPuzzle();
+                checkWin();
+            }
+        }
+
+        function checkWin() {
+            if(puzzleGrid.slice(0, -1).every((num, index) => num === index + 1)) {
+                document.getElementById('puzzle-stage').textContent = 
+                    parseInt(document.getElementById('puzzle-stage').textContent) + 1;
+                setTimeout(createPuzzle, 1000);
             }
         }
 
@@ -526,7 +581,6 @@
             const symbols = memorySymbols.slice(0, memoryPairs);
             const cards = [...symbols, ...symbols];
             
-            // Fisher-Yates shuffle
             for(let i = cards.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [cards[i], cards[j]] = [cards[j], cards[i]];
@@ -540,6 +594,10 @@
                     <div class="memory-back">?</div>
                 `;
                 card.addEventListener('click', () => flipCard(card, symbol));
+                card.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    flipCard(card, symbol);
+                });
                 memoryBoard.appendChild(card);
             });
         }
@@ -580,6 +638,11 @@
             memoryPairs = 2;
             document.getElementById('memory-stage').textContent = '1';
             createMemoryGame();
+        });
+
+        // Prevent default touch behaviors
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
         });
     </script>
 </body>
