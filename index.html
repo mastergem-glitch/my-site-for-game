@@ -490,9 +490,12 @@
         
         function moveParticle() {
             const field = document.getElementById('clicker-area');
-            const x = Math.random() * (field.clientWidth - 50);
-            const y = Math.random() * (field.clientHeight - 50);
-            quantumParticle.style.transform = `translate(${x}px, ${y}px)`;
+            const maxX = field.clientWidth - quantumParticle.offsetWidth;
+            const maxY = field.clientHeight - quantumParticle.offsetHeight;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            quantumParticle.style.left = `${x}px`;
+            quantumParticle.style.top = `${y}px`;
         }
 
         quantumParticle.addEventListener('click', () => {
@@ -508,6 +511,7 @@
             moveParticle();
         });
 
+        // Initialize Clicker
         chaosInterval = setInterval(moveParticle, 1000);
         document.getElementById('reset-clicker').addEventListener('click', () => {
             currentReality.clickerEnergy = 0;
@@ -522,13 +526,20 @@
         const puzzleMatrix = [];
         const puzzleGrid = document.getElementById('puzzle-grid');
         
+        function fisherYatesShuffle(array) {
+            for(let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
         function createPuzzleReality() {
             puzzleGrid.innerHTML = '';
             const size = 3;
             puzzleMatrix.splice(0, puzzleMatrix.length, ...[...Array(size*size).keys()].map(x => x + 1));
-            puzzleMatrix[puzzleMatrix.length-1] = 0;
+            puzzleMatrix[size*size - 1] = 0;
             
-            puzzleMatrix.sort(() => Math.random() - 0.5);
+            fisherYatesShuffle(puzzleMatrix);
             
             puzzleMatrix.forEach((num, index) => {
                 const piece = document.createElement('div');
@@ -544,11 +555,11 @@
             const rowSize = 3;
             
             if(Math.abs(index - emptyIndex) === rowSize || 
-               (Math.abs(index - emptyIndex) === 1 && Math.floor(index/rowSize) === Math.floor(emptyIndex/rowSize)) {
+               (Math.abs(index - emptyIndex) === 1 && Math.floor(index/rowSize) === Math.floor(emptyIndex/rowSize))) {
                 [puzzleMatrix[index], puzzleMatrix[emptyIndex]] = [puzzleMatrix[emptyIndex], puzzleMatrix[index]];
                 createPuzzleReality();
                 
-                if(puzzleMatrix.every((val, i) => val === i+1 || val === 0)) {
+                if(puzzleMatrix.every((val, i) => val === i+1 || (i === puzzleMatrix.length-1 && val === 0))) {
                     currentReality.puzzleDimension++;
                     document.getElementById('puzzle-stage').textContent = currentReality.puzzleDimension;
                     setTimeout(createPuzzleReality, 1000);
@@ -568,7 +579,13 @@
             const grid = document.getElementById('memory-grid');
             grid.innerHTML = '';
             const symbols = memorySymbols.slice(0, memoryPairs);
-            const cards = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+            const cards = [...symbols, ...symbols];
+            
+            // Proper Fisher-Yates shuffle
+            for(let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
             
             cards.forEach(symbol => {
                 const card = document.createElement('div');
@@ -583,7 +600,7 @@
         }
 
         function revealCard(card, symbol) {
-            if(flippedCards.length < 2 && !card.classList.contains('revealed')) {
+            if(flippedCards.length < 2 && !card.classList.contains('revealed') && !card.classList.contains('harmonized')) {
                 card.classList.add('revealed');
                 flippedCards.push({ card, symbol });
                 
