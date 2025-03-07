@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
+<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107573195140676"
      crossorigin="anonymous"></script>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmic Motivation Engine</title>
@@ -11,7 +10,7 @@
             margin: 0;
             padding: 0;
             touch-action: manipulation;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
@@ -19,15 +18,34 @@
             width: 100%;
             height: 100%;
             -webkit-tap-highlight-color: transparent;
-            background: linear-gradient(-45deg, #2a2a72, #009ffd, #2a2a72, #009ffd);
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: galaxyFlow 20s ease infinite;
+            position: relative;
         }
 
-        @keyframes gradientBG {
+        @keyframes galaxyFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        .cosmic-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
 
         .main-universe {
@@ -37,10 +55,10 @@
             transform: translate(-50%, -50%);
             width: 95%;
             max-width: 500px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(17, 17, 34, 0.7);
             backdrop-filter: blur(25px) saturate(180%);
             border-radius: 20px;
-            padding: 20px;
+            padding: 25px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.15);
             z-index: 2;
@@ -49,31 +67,42 @@
         .quantum-tabs {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .quantum-tab {
-            padding: 14px 24px;
-            background: rgba(255, 255, 255, 0.12);
+            padding: 16px 28px;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8));
             border-radius: 14px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
-            font-weight: 500;
+            border: none;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            font-weight: 600;
             letter-spacing: 0.5px;
-            flex: 1 1 auto;
-            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
+        .quantum-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .quantum-tab:hover::before { left: 100%; }
         .quantum-tab.active {
-            background: linear-gradient(135deg, rgba(255,126,95,0.9), rgba(254,180,123,0.9));
-            color: white;
-            box-shadow: 0 4px 20px rgba(255, 126, 95, 0.4);
+            background: linear-gradient(135deg, rgba(255, 126, 95, 0.9), rgba(254, 180, 123, 0.9));
+            box-shadow: 0 4px 25px rgba(255, 126, 95, 0.4);
             transform: translateY(-2px);
         }
 
@@ -93,9 +122,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .dimension-content.active {
-            display: block;
-        }
+        .dimension-content.active { display: block; }
 
         #quantum-emoji {
             font-size: 80px;
@@ -103,7 +130,6 @@
             animation: quantumOrbit 8s linear infinite;
             filter: drop-shadow(0 0 15px rgba(42, 42, 114, 0.5));
             margin: 20px auto;
-            user-select: none;
             text-align: center;
         }
 
@@ -123,7 +149,6 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
-            font-weight: 300;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -143,7 +168,6 @@
             margin: 20px auto;
             background: rgba(0, 0, 0, 0.15);
             touch-action: none;
-            overflow: hidden;
         }
 
         #clicker-emoji {
@@ -151,9 +175,6 @@
             font-size: 60px;
             cursor: pointer;
             animation: quantumPulse 1.5s infinite, emojiGlow 2s ease-in-out infinite;
-            user-select: none;
-            touch-action: none;
-            transition: transform 0.2s ease;
         }
 
         @keyframes quantumPulse {
@@ -184,15 +205,8 @@
             font-size: 24px;
             cursor: pointer;
             color: white;
-            user-select: none;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .puzzle-piece:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.18);
         }
 
         .puzzle-piece.empty {
@@ -216,12 +230,6 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
-            user-select: none;
-            transition: transform 0.3s ease;
-        }
-
-        .memory-card:hover {
-            transform: translateY(-2px);
         }
 
         .memory-front, .memory-back {
@@ -247,82 +255,58 @@
             background: linear-gradient(145deg, rgba(255,126,95,0.8), rgba(254,180,123,0.8));
         }
 
-        .memory-card.revealed .memory-front {
-            transform: rotateY(0deg);
-        }
-
-        .memory-card.revealed .memory-back {
-            transform: rotateY(180deg);
-        }
+        .memory-card.revealed .memory-front { transform: rotateY(0deg); }
+        .memory-card.revealed .memory-back { transform: rotateY(180deg); }
 
         .quantum-button {
-            background: linear-gradient(135deg, rgba(255,126,95,0.8), rgba(254,180,123,0.8));
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
             border: none;
-            padding: 16px 28px;
-            border-radius: 12px;
-            color: white;
+            padding: 18px 32px;
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.95);
             cursor: pointer;
-            margin-top: 20px;
-            font-size: 15px;
+            margin-top: 25px;
+            font-size: 16px;
             width: 100%;
             transition: all 0.3s ease;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-weight: 600;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
+        .quantum-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .quantum-button:hover::after { left: 100%; }
         .quantum-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(255, 126, 95, 0.4);
+            box-shadow: 0 6px 25px rgba(106, 17, 203, 0.4);
         }
 
         @media (max-width: 480px) {
-            .main-universe {
-                padding: 16px;
-                border-radius: 18px;
-            }
-
-            .quantum-tab {
-                padding: 12px 18px;
-                font-size: 14px;
-            }
-
+            .main-universe { padding: 20px; }
+            .quantum-tab { padding: 14px 20px; font-size: 15px; }
             #quantum-emoji { font-size: 60px; }
             #quantum-quote { font-size: 15px; }
-
             #clicker-area { height: 160px; }
             #clicker-emoji { font-size: 45px; }
-
             .puzzle-piece { height: 70px; font-size: 20px; }
             .memory-card { height: 70px; }
         }
-
-        @media (max-width: 360px) {
-            .memory-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .particle {
-            position: absolute;
-            pointer-events: none;
-            animation: particleFloat linear infinite;
-        }
-
-        @keyframes particleFloat {
-            to { transform: translateY(-100vh) rotate(360deg); }
-        }
     </style>
-</head>        
+</head>
 <body>
+    <div class="cosmic-particles" id="particles"></div>
+    
     <div class="main-universe">
         <div class="quantum-tabs">
             <div class="quantum-tab active" data-tab="quotes">Quotes</div>
@@ -372,112 +356,20 @@
     </div>
 
     <script>
-        // Complete 100 Motivational Quotes
-        const quantumWisdom = [
-            { quote: "The only way to do great work is to love what you do. - Steve Jobs", emoji: "❤️" },
-            { quote: "Your potential is infinite like the cosmos. 🌠", emoji: "💫" },
-            { quote: "The universe rewards bold actions. Take the leap! 🌌", emoji: "🚀" },
-            { quote: "Challenges are gravity wells - escape velocity comes from persistence. ⚛️", emoji: "🌪️" },
-            { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill", emoji: "💪" },
-            { quote: "Do what you can, with what you have, where you are. – Theodore Roosevelt", emoji: "🛠️" },
-            { quote: "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt", emoji: "🤔" },
-            { quote: "Start where you are. Use what you have. Do what you can. – Arthur Ashe", emoji: "🏁" },
-            { quote: "Success doesn’t come from what you do occasionally, it comes from what you do consistently.", emoji: "🔄" },
-            { quote: "Your potential is endless. Go do what you were created to do.", emoji: "🌟" },
-            { quote: "Dreams don’t work unless you do.", emoji: "💼" },
-            { quote: "Small steps in the right direction can turn out to be the biggest steps of your life.", emoji: "👣" },
-            { quote: "You don’t have to be great to start, but you have to start to be great. – Zig Ziglar", emoji: "🚀" },
-            { quote: "Everything you’ve ever wanted is on the other side of fear. – George Addair", emoji: "😨" },
-            { quote: "Work hard in silence, let success make the noise.", emoji: "🤫" },
-            { quote: "It’s not whether you get knocked down, it’s whether you get up. – Vince Lombardi", emoji: "🥊" },
-            { quote: "Failure is simply the opportunity to begin again, this time more intelligently. – Henry Ford", emoji: "🔄" },
-            { quote: "Push yourself, because no one else is going to do it for you.", emoji: "🏋️" },
-            { quote: "Winners are not those who never fail but those who never quit.", emoji: "🏆" },
-            { quote: "You didn’t come this far to only come this far.", emoji: "🛤️" },
-            { quote: "Stay patient and trust your journey.", emoji: "⏳" },
-            { quote: "Success is the sum of small efforts, repeated day in and day out. – Robert Collier", emoji: "📅" },
-            { quote: "Don’t be afraid to give up the good to go for the great. – John D. Rockefeller", emoji: "🎯" },
-            { quote: "The secret of success is to do the common things uncommonly well. – John D. Rockefeller", emoji: "🌟" },
-            { quote: "Happiness is not something ready-made. It comes from your own actions. – Dalai Lama", emoji: "😊" },
-            { quote: "A negative mind will never give you a positive life.", emoji: "🚫" },
-            { quote: "Your mindset determines your future.", emoji: "🧠" },
-            { quote: "Difficulties in life are intended to make us better, not bitter.", emoji: "🌱" },
-            { quote: "Don’t let yesterday take up too much of today. – Will Rogers", emoji: "⏳" },
-            { quote: "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. – Winston Churchill", emoji: "😎" },
-            { quote: "You are stronger than you think.", emoji: "💪" },
-            { quote: "Stay positive, work hard, and make it happen.", emoji: "👍" },
-            { quote: "When life gets harder, challenge yourself to be stronger.", emoji: "🏋️" },
-            { quote: "A little progress each day adds up to big results.", emoji: "📈" },
-            { quote: "Feel the fear and do it anyway.", emoji: "😨" },
-            { quote: "Doubt kills more dreams than failure ever will. – Suzy Kassem", emoji: "🚫" },
-            { quote: "Don’t let fear decide your future.", emoji: "🚷" },
-            { quote: "The best way to predict your future is to create it. – Peter Drucker", emoji: "🛠️" },
-            { quote: "Obstacles are those frightful things you see when you take your eyes off your goal. – Henry Ford", emoji: "🚧" },
-            { quote: "The harder the struggle, the more glorious the triumph.", emoji: "🏆" },
-            { quote: "You can’t climb the ladder of success with your hands in your pockets. – Arnold Schwarzenegger", emoji: "🪜" },
-            { quote: "Turn your wounds into wisdom. – Oprah Winfrey", emoji: "🩹" },
-            { quote: "When everything feels like an uphill battle, think of the view from the top.", emoji: "🏔️" },
-            { quote: "Storms make trees take deeper roots.", emoji: "🌳" },
-            { quote: "Believe in yourself, and you’re halfway there. – Theodore Roosevelt", emoji: "🙌" },
-            { quote: "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart.", emoji: "❤️" },
-            { quote: "Act as if what you do makes a difference. It does. – William James", emoji: "🌟" },
-            { quote: "You are enough just as you are. – Meghan Markle", emoji: "🌸" },
-            { quote: "Confidence is not ‘They will like me.’ Confidence is ‘I’ll be fine if they don’t.’", emoji: "😌" },
-            { quote: "Your value doesn’t decrease based on someone’s inability to see your worth.", emoji: "💎" },
-            { quote: "Be yourself; everyone else is already taken. – Oscar Wilde", emoji: "🦄" },
-            { quote: "You were born to be real, not perfect.", emoji: "🌟" },
-            { quote: "Own your story, love yourself, and step into your greatness.", emoji: "📖" },
-            { quote: "What you think about yourself is more important than what others think of you.", emoji: "🧠" },
-            { quote: "Life begins at the end of your comfort zone. – Neale Donald Walsch", emoji: "🌅" },
-            { quote: "Do one thing every day that scares you. – Eleanor Roosevelt", emoji: "😨" },
-            { quote: "If you wait for perfect conditions, you will never get anything done.", emoji: "⏳" },
-            { quote: "Great things never come from comfort zones.", emoji: "🚀" },
-            { quote: "Don’t wait for opportunity. Create it.", emoji: "🛠️" },
-            { quote: "Leap, and the net will appear.", emoji: "🪂" },
-            { quote: "If it doesn’t challenge you, it won’t change you.", emoji: "🏋️" },
-            { quote: "Go confidently in the direction of your dreams. Live the life you have imagined. – Henry David Thoreau", emoji: "🏃" },
-            { quote: "Act as if it were impossible to fail. – Dorothea Brande", emoji: "🌟" },
-            { quote: "Money is a byproduct of value creation.", emoji: "💰" },
-            { quote: "Success isn’t about how much money you make, it’s about the difference you make in people’s lives. – Michelle Obama", emoji: "🤝" },
-            { quote: "Rich people think big. Poor people think small. – T. Harv Eker", emoji: "💡" },
-            { quote: "Formal education will make you a living; self-education will make you a fortune. – Jim Rohn", emoji: "📚" },
-            { quote: "Your network is your net worth.", emoji: "🌐" },
-            { quote: "The more you learn, the more you earn.", emoji: "🧠" },
-            { quote: "Opportunities don’t happen. You create them. – Chris Grosser", emoji: "🛠️" },
-            { quote: "Wealth is not about having a lot of money; it’s about having a lot of options. – Chris Rock", emoji: "🗝️" },
-            { quote: "Build your dreams, or someone else will hire you to build theirs. – Farrah Gray", emoji: "🏗️" },
-            { quote: "Money flows to those who provide value to others.", emoji: "💸" },
-            { quote: "Tough times never last, but tough people do. – Robert H. Schuller", emoji: "💪" },
-            { quote: "You may have to fight a battle more than once to win it. – Margaret Thatcher", emoji: "⚔️" },
-            { quote: "Don’t stop when you’re tired. Stop when you’re done.", emoji: "🛑" },
-            { quote: "Pain is temporary. Quitting lasts forever. – Lance Armstrong", emoji: "⏳" },
-            { quote: "The comeback is always stronger than the setback.", emoji: "🔄" },
-            { quote: "Be like a postage stamp—stick to a thing until you get there. – Josh Billings", emoji: "📬" },
-            { quote: "Fall seven times, stand up eight. – Japanese Proverb", emoji: "🧍" },
-            { quote: "You are one decision away from a completely different life.", emoji: "🚪" },
-            { quote: "No pressure, no diamonds. – Thomas Carlyle", emoji: "💎" },
-            { quote: "Life doesn’t get easier. You just get stronger.", emoji: "💪" },
-            { quote: "Live life to the fullest and focus on the positive. – Matt Cameron", emoji: "😄" },
-            { quote: "Happiness depends upon ourselves. – Aristotle", emoji: "😊" },
-            { quote: "Enjoy the little things in life, for one day you may look back and realize they were the big things. – Robert Brault", emoji: "🌸" },
-            { quote: "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate. – Ralph Waldo Emerson", emoji: "🤝" },
-            { quote: "Live for today, plan for tomorrow, and party tonight.", emoji: "🎉" },
-            { quote: "Be so good they can’t ignore you. – Steve Martin", emoji: "🌟" },
-            { quote: "Make today so awesome that yesterday gets jealous.", emoji: "😎" },
-            { quote: "Smile. It confuses people.", emoji: "😄" },
-            { quote: "Life is short. Smile while you still have teeth.", emoji: "😁" },
-            { quote: "Do what makes your soul shine.", emoji: "✨" },
-            { quote: "Winners focus on winning, losers focus on winners.", emoji: "🏆" },
-            { quote: "Be stronger than your excuses.", emoji: "💪" },
-            { quote: "If you want different results, do something different.", emoji: "🔄" },
-            { quote: "Stop waiting for Friday, summer, or someone to love you. Happiness is now.", emoji: "⏳" },
-            { quote: "Don’t just exist. Live.", emoji: "🌟" },
-            { quote: "You are your only limit.", emoji: "🚫" },
-            { quote: "The dream is free. The hustle is sold separately.", emoji: "💼" },
-            { quote: "Chase your dreams like your life depends on it.", emoji: "🏃" },
-            { quote: "Keep going. Your future self will thank you.", emoji: "⏳" },
-            { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }
-        ];
+        // Create cosmic particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for(let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = particle.style.height = Math.random() * 3 + 1 + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 5 + 3 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particles.appendChild(particle);
+            }
+        }
+        createParticles();
 
         // Tab System
         document.querySelectorAll('.quantum-tab').forEach(tab => {
@@ -497,6 +389,111 @@
         }
 
         // Quote Generator
+        const quantumWisdom = [
+    { quote: "The only way to do great work is to love what you do. - Steve Jobs", emoji: "❤️" },
+    { quote: "Your potential is infinite like the cosmos. 🌠", emoji: "💫" },
+    { quote: "The universe rewards bold actions. Take the leap! 🌌", emoji: "🚀" },
+    { quote: "Challenges are gravity wells - escape velocity comes from persistence. ⚛️", emoji: "🌪️" },
+    { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill", emoji: "💪" },
+    { quote: "Do what you can, with what you have, where you are. – Theodore Roosevelt", emoji: "🛠️" },
+    { quote: "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt", emoji: "🤔" },
+    { quote: "Start where you are. Use what you have. Do what you can. – Arthur Ashe", emoji: "🏁" },
+    { quote: "Success doesn’t come from what you do occasionally, it comes from what you do consistently.", emoji: "🔄" },
+    { quote: "Your potential is endless. Go do what you were created to do.", emoji: "🌟" },
+    { quote: "Dreams don’t work unless you do.", emoji: "💼" },
+    { quote: "Small steps in the right direction can turn out to be the biggest steps of your life.", emoji: "👣" },
+    { quote: "You don’t have to be great to start, but you have to start to be great. – Zig Ziglar", emoji: "🚀" },
+    { quote: "Everything you’ve ever wanted is on the other side of fear. – George Addair", emoji: "😨" },
+    { quote: "Work hard in silence, let success make the noise.", emoji: "🤫" },
+    { quote: "It’s not whether you get knocked down, it’s whether you get up. – Vince Lombardi", emoji: "🥊" },
+    { quote: "Failure is simply the opportunity to begin again, this time more intelligently. – Henry Ford", emoji: "🔄" },
+    { quote: "Push yourself, because no one else is going to do it for you.", emoji: "🏋️" },
+    { quote: "Winners are not those who never fail but those who never quit.", emoji: "🏆" },
+    { quote: "You didn’t come this far to only come this far.", emoji: "🛤️" },
+    { quote: "Stay patient and trust your journey.", emoji: "⏳" },
+    { quote: "Success is the sum of small efforts, repeated day in and day out. – Robert Collier", emoji: "📅" },
+    { quote: "Don’t be afraid to give up the good to go for the great. – John D. Rockefeller", emoji: "🎯" },
+    { quote: "The secret of success is to do the common things uncommonly well. – John D. Rockefeller", emoji: "🌟" },
+    { quote: "Happiness is not something ready-made. It comes from your own actions. – Dalai Lama", emoji: "😊" },
+    { quote: "A negative mind will never give you a positive life.", emoji: "🚫" },
+    { quote: "Your mindset determines your future.", emoji: "🧠" },
+    { quote: "Difficulties in life are intended to make us better, not bitter.", emoji: "🌱" },
+    { quote: "Don’t let yesterday take up too much of today. – Will Rogers", emoji: "⏳" },
+    { quote: "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. – Winston Churchill", emoji: "😎" },
+    { quote: "You are stronger than you think.", emoji: "💪" },
+    { quote: "Stay positive, work hard, and make it happen.", emoji: "👍" },
+    { quote: "When life gets harder, challenge yourself to be stronger.", emoji: "🏋️" },
+    { quote: "A little progress each day adds up to big results.", emoji: "📈" },
+    { quote: "Feel the fear and do it anyway.", emoji: "😨" },
+    { quote: "Doubt kills more dreams than failure ever will. – Suzy Kassem", emoji: "🚫" },
+    { quote: "Don’t let fear decide your future.", emoji: "🚷" },
+    { quote: "The best way to predict your future is to create it. – Peter Drucker", emoji: "🛠️" },
+    { quote: "Obstacles are those frightful things you see when you take your eyes off your goal. – Henry Ford", emoji: "🚧" },
+    { quote: "The harder the struggle, the more glorious the triumph.", emoji: "🏆" },
+    { quote: "You can’t climb the ladder of success with your hands in your pockets. – Arnold Schwarzenegger", emoji: "🪜" },
+    { quote: "Turn your wounds into wisdom. – Oprah Winfrey", emoji: "🩹" },
+    { quote: "When everything feels like an uphill battle, think of the view from the top.", emoji: "🏔️" },
+    { quote: "Storms make trees take deeper roots.", emoji: "🌳" },
+    { quote: "Believe in yourself, and you’re halfway there. – Theodore Roosevelt", emoji: "🙌" },
+    { quote: "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart.", emoji: "❤️" },
+    { quote: "Act as if what you do makes a difference. It does. – William James", emoji: "🌟" },
+    { quote: "You are enough just as you are. – Meghan Markle", emoji: "🌸" },
+    { quote: "Confidence is not ‘They will like me.’ Confidence is ‘I’ll be fine if they don’t.’", emoji: "😌" },
+    { quote: "Your value doesn’t decrease based on someone’s inability to see your worth.", emoji: "💎" },
+    { quote: "Be yourself; everyone else is already taken. – Oscar Wilde", emoji: "🦄" },
+    { quote: "You were born to be real, not perfect.", emoji: "🌟" },
+    { quote: "Own your story, love yourself, and step into your greatness.", emoji: "📖" },
+    { quote: "What you think about yourself is more important than what others think of you.", emoji: "🧠" },
+    { quote: "Life begins at the end of your comfort zone. – Neale Donald Walsch", emoji: "🌅" },
+    { quote: "Do one thing every day that scares you. – Eleanor Roosevelt", emoji: "😨" },
+    { quote: "If you wait for perfect conditions, you will never get anything done.", emoji: "⏳" },
+    { quote: "Great things never come from comfort zones.", emoji: "🚀" },
+    { quote: "Don’t wait for opportunity. Create it.", emoji: "🛠️" },
+    { quote: "Leap, and the net will appear.", emoji: "🪂" },
+    { quote: "If it doesn’t challenge you, it won’t change you.", emoji: "🏋️" },
+    { quote: "Go confidently in the direction of your dreams. Live the life you have imagined. – Henry David Thoreau", emoji: "🏃" },
+    { quote: "Act as if it were impossible to fail. – Dorothea Brande", emoji: "🌟" },
+    { quote: "Money is a byproduct of value creation.", emoji: "💰" },
+    { quote: "Success isn’t about how much money you make, it’s about the difference you make in people’s lives. – Michelle Obama", emoji: "🤝" },
+    { quote: "Rich people think big. Poor people think small. – T. Harv Eker", emoji: "💡" },
+    { quote: "Formal education will make you a living; self-education will make you a fortune. – Jim Rohn", emoji: "📚" },
+    { quote: "Your network is your net worth.", emoji: "🌐" },
+    { quote: "The more you learn, the more you earn.", emoji: "🧠" },
+    { quote: "Opportunities don’t happen. You create them. – Chris Grosser", emoji: "🛠️" },
+    { quote: "Wealth is not about having a lot of money; it’s about having a lot of options. – Chris Rock", emoji: "🗝️" },
+    { quote: "Build your dreams, or someone else will hire you to build theirs. – Farrah Gray", emoji: "🏗️" },
+    { quote: "Money flows to those who provide value to others.", emoji: "💸" },
+    { quote: "Tough times never last, but tough people do. – Robert H. Schuller", emoji: "💪" },
+    { quote: "You may have to fight a battle more than once to win it. – Margaret Thatcher", emoji: "⚔️" },
+    { quote: "Don’t stop when you’re tired. Stop when you’re done.", emoji: "🛑" },
+    { quote: "Pain is temporary. Quitting lasts forever. – Lance Armstrong", emoji: "⏳" },
+    { quote: "The comeback is always stronger than the setback.", emoji: "🔄" },
+    { quote: "Be like a postage stamp—stick to a thing until you get there. – Josh Billings", emoji: "📬" },
+    { quote: "Fall seven times, stand up eight. – Japanese Proverb", emoji: "🧍" },
+    { quote: "You are one decision away from a completely different life.", emoji: "🚪" },
+    { quote: "No pressure, no diamonds. – Thomas Carlyle", emoji: "💎" },
+    { quote: "Life doesn’t get easier. You just get stronger.", emoji: "💪" },
+    { quote: "Live life to the fullest and focus on the positive. – Matt Cameron", emoji: "😄" },
+    { quote: "Happiness depends upon ourselves. – Aristotle", emoji: "😊" },
+    { quote: "Enjoy the little things in life, for one day you may look back and realize they were the big things. – Robert Brault", emoji: "🌸" },
+    { quote: "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate. – Ralph Waldo Emerson", emoji: "🤝" },
+    { quote: "Live for today, plan for tomorrow, and party tonight.", emoji: "🎉" },
+    { quote: "Be so good they can’t ignore you. – Steve Martin", emoji: "🌟" },
+    { quote: "Make today so awesome that yesterday gets jealous.", emoji: "😎" },
+    { quote: "Smile. It confuses people.", emoji: "😄" },
+    { quote: "Life is short. Smile while you still have teeth.", emoji: "😁" },
+    { quote: "Do what makes your soul shine.", emoji: "✨" },
+    { quote: "Winners focus on winning, losers focus on winners.", emoji: "🏆" },
+    { quote: "Be stronger than your excuses.", emoji: "💪" },
+    { quote: "If you want different results, do something different.", emoji: "🔄" },
+    { quote: "Stop waiting for Friday, summer, or someone to love you. Happiness is now.", emoji: "⏳" },
+    { quote: "Don’t just exist. Live.", emoji: "🌟" },
+    { quote: "You are your only limit.", emoji: "🚫" },
+    { quote: "The dream is free. The hustle is sold separately.", emoji: "💼" },
+    { quote: "Chase your dreams like your life depends on it.", emoji: "🏃" },
+    { quote: "Keep going. Your future self will thank you.", emoji: "⏳" },
+    { quote: "One day, you will tell your story and it will inspire others.", emoji: "📖" }
+];
         const quantumEmoji = document.getElementById('quantum-emoji');
         quantumEmoji.addEventListener('click', generateQuote);
         quantumEmoji.addEventListener('touchstart', generateQuote);
@@ -514,9 +511,7 @@
         }
 
         // Clicker Game
-        let clickerScore = 0;
-        let clickerStage = 1;
-        let clickerInterval;
+        let clickerScore = 0, clickerStage = 1, clickerInterval;
         const clickerEmoji = document.getElementById('clicker-emoji');
 
         function moveEmoji() {
@@ -554,15 +549,12 @@
 
         // Puzzle Game
         const puzzleSize = 3;
-        let puzzleGrid = [];
+        let puzzleGrid = [], emptyIndex = 8;
         const puzzleElements = document.getElementById('puzzle-grid');
-        let emptyIndex = 8;
 
         function createPuzzle() {
             puzzleGrid = [1, 2, 3, 4, 5, 6, 7, 8, 0];
             emptyIndex = 8;
-            
-            // Make 100 random valid moves to shuffle
             for(let i = 0; i < 100; i++) {
                 const possibleMoves = getValidMoves();
                 const move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
@@ -575,12 +567,10 @@
             const moves = [];
             const row = Math.floor(emptyIndex / puzzleSize);
             const col = emptyIndex % puzzleSize;
-
-            if(row > 0) moves.push(emptyIndex - puzzleSize); // Up
-            if(row < puzzleSize - 1) moves.push(emptyIndex + puzzleSize); // Down
-            if(col > 0) moves.push(emptyIndex - 1); // Left
-            if(col < puzzleSize - 1) moves.push(emptyIndex + 1); // Right
-
+            if(row > 0) moves.push(emptyIndex - puzzleSize);
+            if(row < puzzleSize - 1) moves.push(emptyIndex + puzzleSize);
+            if(col > 0) moves.push(emptyIndex - 1);
+            if(col < puzzleSize - 1) moves.push(emptyIndex + 1);
             return moves;
         }
 
@@ -628,9 +618,7 @@
 
         // Memory Game
         const memorySymbols = ['🌌', '🌠', '⚛️', '🌀', '💫', '🌪️'];
-        let memoryStage = 1;
-        let memoryPairs = 2;
-        let flippedCards = [];
+        let memoryStage = 1, memoryPairs = 2, flippedCards = [];
         const memoryBoard = document.getElementById('memory-grid');
 
         function createMemoryGame() {
@@ -646,10 +634,7 @@
             cards.forEach(symbol => {
                 const card = document.createElement('div');
                 card.className = 'memory-card';
-                card.innerHTML = `
-                    <div class="memory-front">${symbol}</div>
-                    <div class="memory-back">?</div>
-                `;
+                card.innerHTML = `<div class="memory-front">${symbol}</div><div class="memory-back">?</div>`;
                 card.addEventListener('click', () => flipCard(card, symbol));
                 card.addEventListener('touchstart', (e) => {
                     e.preventDefault();
@@ -672,7 +657,6 @@
 
         function checkMatch() {
             const [card1, card2] = flippedCards;
-            
             if(card1.symbol === card2.symbol) {
                 card1.card.classList.add('harmonized');
                 card2.card.classList.add('harmonized');
@@ -698,9 +682,7 @@
         });
 
         // Prevent default touch behaviors
-        document.addEventListener('gesturestart', function(e) {
-            e.preventDefault();
-        });
+        document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
     </script>
 </body>
 </html>
